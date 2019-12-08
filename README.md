@@ -1,2 +1,2 @@
-# JsAlgorithmDrydock
-A drydock to test and develop algorithms in Javascript
+# JsNumericDrydock
+A Drydock to test numeric functions and algorithms in Javascript
