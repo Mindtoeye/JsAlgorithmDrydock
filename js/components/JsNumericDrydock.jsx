@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
-import NumericStringExtract from './numericstringextract';
-
+import NumericStringExtract from './algorithms/numericstringextract';
+import BasicStatisticsTests from './algorithms/basicstatisticstests';
 import DataTools from './utils/datatools';
 
 import '../../css/main.css';
@@ -19,24 +19,25 @@ class JsNumericDrydock extends Component {
   	super(props);
 
   	this.state={
-	  tabs: [
-	  {
-      title: "Test 1 - Extract numeric value from string",
-	  	active: "active",
-	    shown:"shown"
-	  },{
-      title: "Test 2 - ",
-	  	active: " ",
-	    shown: "hidden"
-	  },{
-      title: "Test 3 - ",
-	    active: " ",
-      shown: "hidden"
-    }]
-	};
+      tabs: [
+	    {
+        title: "Test 1 - Extract numeric value from string",
+	    	active: "active",
+	      shown:"shown"
+	    },{
+        title: "Test 2 - Basic statistics",
+	  	  active: " ",
+	      shown: "hidden"
+	    },{
+        title: "Test 3 - ",
+	      active: " ",
+        shown: "hidden"
+      }]
+	  };
 
     this.dataTools = new DataTools ();
   	this.stringExtract = new NumericStringExtract ();
+    this.basicstats = new BasicStatisticsTests ();
 
   	this.switchTab = this.switchTab.bind (this);
   }
@@ -45,9 +46,9 @@ class JsNumericDrydock extends Component {
    *
    */
   switchTab (e,target) {
-	console.log ("switchTab ("+target+")");
+    console.log ("switchTab ("+target+")");
 
-	let newTabs= this.dataTools.deepCopy (this.state.tabs);
+	  let newTabs= this.dataTools.deepCopy (this.state.tabs);
 
     for (let i=0;i<newTabs.length;i++) {
       newTabs [i].active="";
@@ -59,9 +60,9 @@ class JsNumericDrydock extends Component {
       }
     }
 
-	this.setState ({
-	  tabs: newTabs
-	});
+	  this.setState ({
+	    tabs: newTabs
+	  });
   }
 
   /**
@@ -137,15 +138,89 @@ class JsNumericDrydock extends Component {
    *
    */
   generateTest2 () {
-    return ("Test 2");
+    return (<table className="darkTable">
+      <thead>
+        <tr>
+          <th>Should be Correct/Incorrect</th>
+          <th>Input</th>
+          <th>Function</th>
+          <th>Output</th>                   
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+        <td>Correct</td><td>01az</td><td> extract [0-9a-fA-F]+ </td><td>{this.stringExtract.extract ("01az","[0-9a-fA-F]+")}</td>
+      </tr>     
+
+      </tbody>
+    </table>);
   }
   
   /**
    *
    */
   generateTest3 () {
-  	return ("Test 3");
-  }    
+    return (<table className="darkTable">
+      <thead>
+        <tr>
+          <th>Should be Correct/Incorrect</th>
+          <th>Input</th>
+          <th>Function</th>
+          <th>Output</th>                   
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+        <td>Correct</td><td>01az</td><td> extract [0-9a-fA-F]+ </td><td>{this.stringExtract.extract ("01az","[0-9a-fA-F]+")}</td>
+      </tr>     
+
+      </tbody>
+    </table>);
+  }  
+
+  /**
+   *
+   */
+  generateTest4 () {
+    return (<table className="darkTable">
+      <thead>
+        <tr>
+          <th>Should be Correct/Incorrect</th>
+          <th>Input</th>
+          <th>Function</th>
+          <th>Output</th>                   
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+        <td>Correct</td><td>01az</td><td> extract [0-9a-fA-F]+ </td><td>{this.stringExtract.extract ("01az","[0-9a-fA-F]+")}</td>
+      </tr>     
+
+      </tbody>
+    </table>);
+  }  
+
+  /**
+   *
+   */
+  generateTest5 () {
+    return (<table className="darkTable">
+      <thead>
+        <tr>
+          <th>Should be Correct/Incorrect</th>
+          <th>Input</th>
+          <th>Function</th>
+          <th>Output</th>                   
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+        <td>Correct</td><td>01az</td><td> extract [0-9a-fA-F]+ </td><td>{this.stringExtract.extract ("01az","[0-9a-fA-F]+")}</td>
+      </tr>     
+
+      </tbody>
+    </table>);
+  }  
 
   /**
    *
