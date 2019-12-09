@@ -156,11 +156,14 @@ class JsNumericDrydock extends Component {
       </thead>
       <tbody>
         <tr>
-          <td>Correct</td><td>{JSON.stringify (setFixed)}</td><td> median </td><td>{this.basicStats.median (setFixed)}</td>
+          <td>Correct</td><td>{JSON.stringify (setFixed)}</td><td> median </td><td>{this.basicStats.mean (setFixed)}</td>
         </tr>
         <tr>
-          <td>Correct</td><td>{JSON.stringify (setRandom)}</td><td> median </td><td>{this.basicStats.median (setRandom)}</td>
+          <td>Correct</td><td>{JSON.stringify (setRandom)}</td><td> median </td><td>{this.basicStats.mean (setRandom)}</td>
         </tr>        
+        <tr>
+          <td>Correct</td><td>{JSON.stringify (setRandom)}</td><td> range </td><td>{JSON.stringify (this.basicStats.range (setRandom))}</td>
+        </tr>                
       </tbody>
     </table>);
   }
