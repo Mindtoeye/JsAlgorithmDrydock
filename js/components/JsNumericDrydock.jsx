@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 
 import NumericStringExtract from './algorithms/numericstringextract';
 import BasicStatisticsTests from './algorithms/basicstatisticstests';
+
+import SetGenerator from './utils/setgenerator';
 import DataTools from './utils/datatools';
 
 import '../../css/main.css';
@@ -29,15 +31,17 @@ class JsNumericDrydock extends Component {
 	  	  active: " ",
 	      shown: "hidden"
 	    },{
-        title: "Test 3 - ",
+        title: "Test 3 - Graph algorithm tests",
 	      active: " ",
         shown: "hidden"
       }]
 	  };
 
+    this.setGenerator = new SetGenerator ();
     this.dataTools = new DataTools ();
+
   	this.stringExtract = new NumericStringExtract ();
-    this.basicstats = new BasicStatisticsTests ();
+    this.basicStats = new BasicStatisticsTests ();
 
   	this.switchTab = this.switchTab.bind (this);
   }
@@ -138,6 +142,9 @@ class JsNumericDrydock extends Component {
    *
    */
   generateTest2 () {
+    let setFixed=this.setGenerator.generateFixedInt (10,3);
+    let setRandom=this.setGenerator.generateRandomInt (10);
+
     return (<table className="darkTable">
       <thead>
         <tr>
@@ -149,9 +156,11 @@ class JsNumericDrydock extends Component {
       </thead>
       <tbody>
         <tr>
-        <td>Correct</td><td>01az</td><td> extract [0-9a-fA-F]+ </td><td>{this.stringExtract.extract ("01az","[0-9a-fA-F]+")}</td>
-      </tr>     
-
+          <td>Correct</td><td>{JSON.stringify (setFixed)}</td><td> median </td><td>{this.basicStats.median (setFixed)}</td>
+        </tr>
+        <tr>
+          <td>Correct</td><td>{JSON.stringify (setRandom)}</td><td> median </td><td>{this.basicStats.median (setRandom)}</td>
+        </tr>        
       </tbody>
     </table>);
   }
