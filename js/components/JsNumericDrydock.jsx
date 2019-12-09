@@ -31,8 +31,16 @@ class JsNumericDrydock extends Component {
 	  	  active: " ",
 	      shown: "hidden"
 	    },{
-        title: "Test 3 - Graph algorithm tests",
+        title: "Test 3 - Graph algorithms",
 	      active: " ",
+        shown: "hidden"
+      },{
+        title: "Test 4 - Set theory",
+        active: " ",
+        shown: "hidden"
+      },{
+        title: "Test 5 - Maps, Sets, Trees, Queues, etc",
+        active: " ",
         shown: "hidden"
       }]
 	  };
@@ -241,28 +249,43 @@ class JsNumericDrydock extends Component {
   	let tab1=this.generateTest1();
   	let tab2=this.generateTest2();
   	let tab3=this.generateTest3();
+    let tab4=this.generateTest4();
+    let tab5=this.generateTest5();
 
   	return (<div className="maincontainer">
-      <div className="tab">
-	    <button className={"tablinks " + this.state.tabs [0].active} onClick={(e) => this.switchTab(e,0)}>{this.state.tabs [0].title}</button>
-	    <button className={"tablinks " + this.state.tabs [1].active} onClick={(e) => this.switchTab(e,1)}>{this.state.tabs [1].title}</button>
-	    <button className={"tablinks " + this.state.tabs [2].active} onClick={(e) => this.switchTab(e,2)}>{this.state.tabs [2].title}</button>
-	  </div>
+        <div className="tab">
+  	    <button className={"tablinks " + this.state.tabs [0].active} onClick={(e) => this.switchTab(e,0)}>{this.state.tabs [0].title}</button>
+  	    <button className={"tablinks " + this.state.tabs [1].active} onClick={(e) => this.switchTab(e,1)}>{this.state.tabs [1].title}</button>
+  	    <button className={"tablinks " + this.state.tabs [2].active} onClick={(e) => this.switchTab(e,2)}>{this.state.tabs [2].title}</button>
+        <button className={"tablinks " + this.state.tabs [3].active} onClick={(e) => this.switchTab(e,3)}>{this.state.tabs [3].title}</button>
+        <button className={"tablinks " + this.state.tabs [4].active} onClick={(e) => this.switchTab(e,4)}>{this.state.tabs [4].title}</button>
+  	  </div>
 
-	  <div id="test1" className={"tabcontent " + this.state.tabs [0].shown}>
-    <h2 className="testtitle">{this.state.tabs [0].title}</h2>
-	  {tab1}
-	  </div>
+  	  <div id="test1" className={"tabcontent " + this.state.tabs [0].shown}>
+      <h2 className="testtitle">{this.state.tabs [0].title}</h2>
+  	  {tab1}
+  	  </div>
 
-	  <div id="test2" className={"tabcontent " + this.state.tabs [1].shown}>
-    <h2 className="testtitle">{this.state.tabs [1].title}</h2>  
-	  {tab2}
-	  </div>
+  	  <div id="test2" className={"tabcontent " + this.state.tabs [1].shown}>
+      <h2 className="testtitle">{this.state.tabs [1].title}</h2>  
+  	  {tab2}
+  	  </div>
 
-	  <div id="test3" className={"tabcontent " + this.state.tabs [2].shown}>
-    <h2 className="testtitle">{this.state.tabs [2].title}</h2>  
-	  {tab3}
-	  </div>
+  	  <div id="test3" className={"tabcontent " + this.state.tabs [2].shown}>
+      <h2 className="testtitle">{this.state.tabs [2].title}</h2>  
+  	  {tab3}
+  	  </div>
+
+      <div id="test4" className={"tabcontent " + this.state.tabs [3].shown}>
+      <h2 className="testtitle">{this.state.tabs [3].title}</h2>  
+      {tab4}
+      </div>
+
+      <div id="test5" className={"tabcontent " + this.state.tabs [4].shown}>
+      <h2 className="testtitle">{this.state.tabs [4].title}</h2>  
+      {tab5}
+      </div>
+
   	</div>);
   }
 }
