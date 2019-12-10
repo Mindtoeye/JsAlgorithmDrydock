@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import NumericStringExtract from './algorithms/numericstringextract';
 import BasicStatisticsTests from './algorithms/basicstatisticstests';
+import SetOperations from './algorithms/setoperations';
 
 import SetGenerator from './utils/setgenerator';
 import DataTools from './utils/datatools';
@@ -35,7 +36,7 @@ class JsNumericDrydock extends Component {
 	      active: " ",
         shown: "hidden"
       },{
-        title: "Test 4 - Set theory",
+        title: "Test 4 - Set operations",
         active: " ",
         shown: "hidden"
       },{
@@ -50,6 +51,7 @@ class JsNumericDrydock extends Component {
 
   	this.stringExtract = new NumericStringExtract ();
     this.basicStats = new BasicStatisticsTests ();
+    this.setOperations = new SetOperations ();
 
   	this.switchTab = this.switchTab.bind (this);
   }
@@ -202,6 +204,8 @@ class JsNumericDrydock extends Component {
    *
    */
   generateTest4 () {
+    let setRandom1=this.setGenerator.generateRandomInt (10);
+    let setRandom2=this.setGenerator.generateRandomInt (10);
     return (<table className="darkTable">
       <thead>
         <tr>
@@ -213,11 +217,13 @@ class JsNumericDrydock extends Component {
       </thead>
       <tbody>
         <tr>
-        <td>Correct</td><td>01az</td><td> extract [0-9a-fA-F]+ </td><td>{this.stringExtract.extract ("01az","[0-9a-fA-F]+")}</td>
-      </tr>     
-
+          <td>Correct</td><td>{JSON.stringify (setRandom1) + ", " + JSON.stringify (setRandom2)}</td><td> and </td><td>{JSON.stringify (this.setOperations.and (setRandom1,setRandom2))}</td>
+        </tr>
+        <tr>
+          <td>Correct</td><td>{JSON.stringify (setRandom1) + ", " + JSON.stringify (setRandom2)}</td><td> or </td><td>{JSON.stringify (this.setOperations.or (setRandom1,setRandom2))}</td>
+        </tr>        
       </tbody>
-    </table>);
+    </table>);    
   }  
 
   /**
