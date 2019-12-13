@@ -2,7 +2,7 @@
 
 A Drydock to test numeric functions and algorithms in Javascript
 
-![Image](https://github.com/Knossys/JsAlgorithmDrydock/resources/screenshot.png)
+![Image](https://github.com/Knossys/JsAlgorithmDrydock/wiki/screenshot.png)
 
 ## Using and Developing the React Code
 
