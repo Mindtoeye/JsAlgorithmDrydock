@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import NumericStringExtract from './algorithms/numericstringextract';
 import BasicStatisticsTests from './algorithms/basicstatisticstests';
 import SetOperations from './algorithms/setoperations';
+import SortOperations from './algorithms/sortoperations';
 
 import SetGenerator from './utils/setgenerator';
 import DataTools from './utils/datatools';
@@ -43,6 +44,10 @@ class JsNumericDrydock extends Component {
         title: "Test 5 - Maps, Sets, Trees, Queues, etc",
         active: " ",
         shown: "hidden"
+      },{
+        title: "Test 6 - Misc sorting routines",
+        active: " ",
+        shown: "hidden"
       }]
 	  };
 
@@ -52,6 +57,7 @@ class JsNumericDrydock extends Component {
   	this.stringExtract = new NumericStringExtract ();
     this.basicStats = new BasicStatisticsTests ();
     this.setOperations = new SetOperations ();
+    this.sortOperations = new SortOperations ();
 
   	this.switchTab = this.switchTab.bind (this);
   }
@@ -246,7 +252,41 @@ class JsNumericDrydock extends Component {
 
       </tbody>
     </table>);
-  }  
+  }
+
+  /**
+   *
+   */
+  generateTest6 () {
+    let sortInputArray=["apples", "cranberries", "bananas", "oranges", "grapefruit"];
+    let sortInputObjects=[{"title":"apples"}, {"title":"cranberries"}, {"title":"bananas"}, {"title":"oranges"}, {"title":"grapefruit"}];
+
+    return (<table className="darkTable">
+      <thead>
+        <tr>
+          <th>Should be Correct/Incorrect</th>
+          <th>Input</th>
+          <th>Function</th>
+          <th>Output</th>                   
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Correct</td><td>{JSON.stringify (sortInputArray)}</td><td> sort lexically </td><td>{JSON.stringify (this.sortOperations.sortAZ (this.dataTools.deepCopy (sortInputArray),null))}</td>
+        </tr>     
+        <tr>
+          <td>Correct</td><td>{JSON.stringify (sortInputArray)}</td><td> sort lexically (reverse) </td><td>{JSON.stringify (this.sortOperations.sortZA (this.dataTools.deepCopy (sortInputArray),null))}</td>
+        </tr>     
+        <tr>
+          <td>Correct</td><td>{JSON.stringify (sortInputObjects)}</td><td> sort lexically </td><td>{JSON.stringify (this.sortOperations.sortAZ (this.dataTools.deepCopy (sortInputObjects),"title"))}</td>
+        </tr>     
+        <tr>
+          <td>Correct</td><td>{JSON.stringify (sortInputObjects)}</td><td> sort lexically (reverse)</td><td>{JSON.stringify (this.sortOperations.sortZA (this.dataTools.deepCopy (sortInputObjects),"title"))}</td>
+        </tr>                             
+
+      </tbody>
+    </table>);
+  }    
 
   /**
    *
@@ -257,6 +297,7 @@ class JsNumericDrydock extends Component {
   	let tab3=this.generateTest3();
     let tab4=this.generateTest4();
     let tab5=this.generateTest5();
+    let tab6=this.generateTest6();
 
   	return (<div className="maincontainer">
         <div className="tab">
@@ -265,6 +306,7 @@ class JsNumericDrydock extends Component {
   	    <button className={"tablinks " + this.state.tabs [2].active} onClick={(e) => this.switchTab(e,2)}>{this.state.tabs [2].title}</button>
         <button className={"tablinks " + this.state.tabs [3].active} onClick={(e) => this.switchTab(e,3)}>{this.state.tabs [3].title}</button>
         <button className={"tablinks " + this.state.tabs [4].active} onClick={(e) => this.switchTab(e,4)}>{this.state.tabs [4].title}</button>
+        <button className={"tablinks " + this.state.tabs [5].active} onClick={(e) => this.switchTab(e,5)}>{this.state.tabs [5].title}</button>        
   	  </div>
 
   	  <div id="test1" className={"tabcontent " + this.state.tabs [0].shown}>
@@ -291,6 +333,11 @@ class JsNumericDrydock extends Component {
       <h2 className="testtitle">{this.state.tabs [4].title}</h2>  
       {tab5}
       </div>
+
+      <div id="test6" className={"tabcontent " + this.state.tabs [5].shown}>
+      <h2 className="testtitle">{this.state.tabs [5].title}</h2>  
+      {tab6}
+      </div>      
 
   	</div>);
   }

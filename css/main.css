@@ -65,7 +65,7 @@ table.darkTable td, table.darkTable th {
 }
 table.darkTable tbody td {
   font-size: 13px;
-  color: #b9b8b8;
+  color: #dbd8d8;
 }
 table.darkTable tr:nth-child(even) {
   background: #888888;
