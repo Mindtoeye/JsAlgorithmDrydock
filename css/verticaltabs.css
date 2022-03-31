@@ -5,11 +5,13 @@
   float: left;
   width: 200px;
   border-right: 1px solid #4a4949;
+  padding-top: 5px;
   padding-left: 8px;
 
-  -webkit-box-shadow: inset -7px 0px 17px 3px rgba(0,0,0,0.45);
-  -moz-box-shadow: inset -7px 0px 17px 3px rgba(0,0,0,0.45);
-  box-shadow: inset -7px 0px 17px 3px rgba(0,0,0,0.45);  
+  -webkit-box-shadow: inset -13px 1px 16px -5px rgba(0,0,0,0.52); 
+  box-shadow: inset -13px 1px 16px -5px rgba(0,0,0,0.52);
+
+  background-color: #202020;
 }
 
 .tab button {
