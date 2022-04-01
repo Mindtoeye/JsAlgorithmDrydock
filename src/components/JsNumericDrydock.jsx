@@ -7,6 +7,11 @@ import SortOperations from './algorithms/sortoperations';
 
 import SetGenerator from './utils/setgenerator';
 import DataTools from './utils/datatools';
+import TestingTools from './TestingTools';
+
+import { diff } from './treekit/diff';
+
+import { tests } from './tests';
 
 import '../../css/main.css';
 import '../../css/verticaltabs.css';
@@ -22,44 +27,17 @@ class JsNumericDrydock extends Component {
   constructor (props) {
   	super(props);
 
-  	this.state={
-      tab: 0,
-      tabs: [
-	    {
-        title: "Test 1 - Extract numeric value from string",
-	    	active: "active",
-	      shown:"shown",
-        help: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nunc scelerisque viverra mauris in. Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Semper viverra nam libero justo. Vel facilisis volutpat est velit egestas dui id ornare arcu. Magna etiam tempor orci eu lobortis elementum nibh tellus. Hac habitasse platea dictumst vestibulum rhoncus est pellentesque elit. Odio euismod lacinia at quis risus sed vulputate odio. Ac odio tempor orci dapibus ultrices in. Urna cursus eget nunc scelerisque. Sed egestas egestas fringilla phasellus faucibus scelerisque. Eget mi proin sed libero enim sed faucibus. Aliquam nulla facilisi cras fermentum odio. Euismod quis viverra nibh cras pulvinar mattis. In iaculis nunc sed augue lacus viverra vitae congue. Sed viverra tellus in hac habitasse platea dictumst vestibulum rhoncus. Cras fermentum odio eu feugiat pretium nibh ipsum consequat. Tellus cras adipiscing enim eu turpis egestas pretium aenean pharetra. Purus ut faucibus pulvinar elementum integer. Risus at ultrices mi tempus imperdiet."
-	    },{
-        title: "Test 2 - Basic statistics",
-	  	  active: " ",
-	      shown: "hidden",
-        help: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nunc scelerisque viverra mauris in. Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Semper viverra nam libero justo. Vel facilisis volutpat est velit egestas dui id ornare arcu. Magna etiam tempor orci eu lobortis elementum nibh tellus. Hac habitasse platea dictumst vestibulum rhoncus est pellentesque elit. Odio euismod lacinia at quis risus sed vulputate odio. Ac odio tempor orci dapibus ultrices in. Urna cursus eget nunc scelerisque. Sed egestas egestas fringilla phasellus faucibus scelerisque. Eget mi proin sed libero enim sed faucibus. Aliquam nulla facilisi cras fermentum odio. Euismod quis viverra nibh cras pulvinar mattis. In iaculis nunc sed augue lacus viverra vitae congue. Sed viverra tellus in hac habitasse platea dictumst vestibulum rhoncus. Cras fermentum odio eu feugiat pretium nibh ipsum consequat. Tellus cras adipiscing enim eu turpis egestas pretium aenean pharetra. Purus ut faucibus pulvinar elementum integer. Risus at ultrices mi tempus imperdiet."
-	    },{
-        title: "Test 3 - Graph algorithms",
-	      active: " ",
-        shown: "hidden",
-        help: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nunc scelerisque viverra mauris in. Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Semper viverra nam libero justo. Vel facilisis volutpat est velit egestas dui id ornare arcu. Magna etiam tempor orci eu lobortis elementum nibh tellus. Hac habitasse platea dictumst vestibulum rhoncus est pellentesque elit. Odio euismod lacinia at quis risus sed vulputate odio. Ac odio tempor orci dapibus ultrices in. Urna cursus eget nunc scelerisque. Sed egestas egestas fringilla phasellus faucibus scelerisque. Eget mi proin sed libero enim sed faucibus. Aliquam nulla facilisi cras fermentum odio. Euismod quis viverra nibh cras pulvinar mattis. In iaculis nunc sed augue lacus viverra vitae congue. Sed viverra tellus in hac habitasse platea dictumst vestibulum rhoncus. Cras fermentum odio eu feugiat pretium nibh ipsum consequat. Tellus cras adipiscing enim eu turpis egestas pretium aenean pharetra. Purus ut faucibus pulvinar elementum integer. Risus at ultrices mi tempus imperdiet."
-      },{
-        title: "Test 4 - Set operations",
-        active: " ",
-        shown: "hidden",
-        help: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nunc scelerisque viverra mauris in. Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Semper viverra nam libero justo. Vel facilisis volutpat est velit egestas dui id ornare arcu. Magna etiam tempor orci eu lobortis elementum nibh tellus. Hac habitasse platea dictumst vestibulum rhoncus est pellentesque elit. Odio euismod lacinia at quis risus sed vulputate odio. Ac odio tempor orci dapibus ultrices in. Urna cursus eget nunc scelerisque. Sed egestas egestas fringilla phasellus faucibus scelerisque. Eget mi proin sed libero enim sed faucibus. Aliquam nulla facilisi cras fermentum odio. Euismod quis viverra nibh cras pulvinar mattis. In iaculis nunc sed augue lacus viverra vitae congue. Sed viverra tellus in hac habitasse platea dictumst vestibulum rhoncus. Cras fermentum odio eu feugiat pretium nibh ipsum consequat. Tellus cras adipiscing enim eu turpis egestas pretium aenean pharetra. Purus ut faucibus pulvinar elementum integer. Risus at ultrices mi tempus imperdiet."
-      },{
-        title: "Test 5 - Maps, Sets, Trees, Queues, etc",
-        active: " ",
-        shown: "hidden",
-        help: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nunc scelerisque viverra mauris in. Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Semper viverra nam libero justo. Vel facilisis volutpat est velit egestas dui id ornare arcu. Magna etiam tempor orci eu lobortis elementum nibh tellus. Hac habitasse platea dictumst vestibulum rhoncus est pellentesque elit. Odio euismod lacinia at quis risus sed vulputate odio. Ac odio tempor orci dapibus ultrices in. Urna cursus eget nunc scelerisque. Sed egestas egestas fringilla phasellus faucibus scelerisque. Eget mi proin sed libero enim sed faucibus. Aliquam nulla facilisi cras fermentum odio. Euismod quis viverra nibh cras pulvinar mattis. In iaculis nunc sed augue lacus viverra vitae congue. Sed viverra tellus in hac habitasse platea dictumst vestibulum rhoncus. Cras fermentum odio eu feugiat pretium nibh ipsum consequat. Tellus cras adipiscing enim eu turpis egestas pretium aenean pharetra. Purus ut faucibus pulvinar elementum integer. Risus at ultrices mi tempus imperdiet."
-      },{
-        title: "Test 6 - Misc sorting routines",
-        active: " ",
-        shown: "hidden",
-        help: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nunc scelerisque viverra mauris in. Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Semper viverra nam libero justo. Vel facilisis volutpat est velit egestas dui id ornare arcu. Magna etiam tempor orci eu lobortis elementum nibh tellus. Hac habitasse platea dictumst vestibulum rhoncus est pellentesque elit. Odio euismod lacinia at quis risus sed vulputate odio. Ac odio tempor orci dapibus ultrices in. Urna cursus eget nunc scelerisque. Sed egestas egestas fringilla phasellus faucibus scelerisque. Eget mi proin sed libero enim sed faucibus. Aliquam nulla facilisi cras fermentum odio. Euismod quis viverra nibh cras pulvinar mattis. In iaculis nunc sed augue lacus viverra vitae congue. Sed viverra tellus in hac habitasse platea dictumst vestibulum rhoncus. Cras fermentum odio eu feugiat pretium nibh ipsum consequat. Tellus cras adipiscing enim eu turpis egestas pretium aenean pharetra. Purus ut faucibus pulvinar elementum integer. Risus at ultrices mi tempus imperdiet."
-      }]
-	  };
-
     this.setGenerator = new SetGenerator ();
     this.dataTools = new DataTools ();
+
+    let data=this.dataTools.deepCopy (tests);
+
+    this.prep (data);
+
+  	this.state={
+      tab: 0,
+      tabs: data
+	  };
 
   	this.stringExtract = new NumericStringExtract ();
     this.basicStats = new BasicStatisticsTests ();
@@ -67,6 +45,28 @@ class JsNumericDrydock extends Component {
     this.sortOperations = new SortOperations ();
 
   	this.switchTab = this.switchTab.bind (this);
+  }
+
+  /**
+   *
+   */
+  prep (data) {
+    console.log ("prep ()");
+
+    let result=diff (data,tests);
+
+    console.log (result);
+
+    for (let i=0;i<data.length;i++) {
+      let entry=data[i];
+      if (i==0) {
+        entry.active="active";
+        entry.shown="shown";
+      } else {
+        entry.active=" ";
+        entry.shown="hidden";
+      }
+    }
   }
 
   /**
@@ -100,7 +100,7 @@ class JsNumericDrydock extends Component {
   	return (<table className="darkTable">
   	  <thead>
   	    <tr>
-  	      <th>Should be Correct/Incorrect</th>
+  	      <th>Correct/Incorrect</th>
   	      <th>Input</th>
   	      <th>Function</th>
   	      <th>Output</th>  	        	      

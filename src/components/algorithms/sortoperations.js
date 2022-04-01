@@ -1,8 +1,21 @@
 
+import OperationsBase from './operationsbase'
+
 /**
  *
  */
-class SortOperations {
+class SortOperations extends OperationsBase {
+
+  /**
+   * 
+   */
+  constructor () {
+    super();
+
+    this.setName ("SortOperations");
+    this.addOperation ("sortAZ");
+    this.addOperation ("sortZA");
+  }
 
   /**
    * A function that defines a sort order. The function should return a negative, zero, or positive value, depending on the arguments:
