@@ -100,7 +100,7 @@ class JsNumericDrydock extends Component {
   	return (<table className="darkTable">
   	  <thead>
   	    <tr>
-  	      <th>Correct/Incorrect</th>
+  	      <th>Evaluation</th>
   	      <th>Input</th>
   	      <th>Function</th>
   	      <th>Output</th>  	        	      
@@ -172,7 +172,7 @@ class JsNumericDrydock extends Component {
     return (<table className="darkTable">
       <thead>
         <tr>
-          <th>Should be Correct/Incorrect</th>
+          <th>Evaluation</th>
           <th>Input</th>
           <th>Function</th>
           <th>Output</th>                   
@@ -199,7 +199,7 @@ class JsNumericDrydock extends Component {
     return (<table className="darkTable">
       <thead>
         <tr>
-          <th>Should be Correct/Incorrect</th>
+          <th>Evaluation</th>
           <th>Input</th>
           <th>Function</th>
           <th>Output</th>                   
@@ -223,7 +223,7 @@ class JsNumericDrydock extends Component {
     return (<table className="darkTable">
       <thead>
         <tr>
-          <th>Should be Correct/Incorrect</th>
+          <th>Evaluation</th>
           <th>Input</th>
           <th>Function</th>
           <th>Output</th>                   
@@ -247,7 +247,7 @@ class JsNumericDrydock extends Component {
     return (<table className="darkTable">
       <thead>
         <tr>
-          <th>Should be Correct/Incorrect</th>
+          <th>Evaluation</th>
           <th>Input</th>
           <th>Function</th>
           <th>Output</th>                   
@@ -268,17 +268,20 @@ class JsNumericDrydock extends Component {
   generateTest6 () {
     let sortInputArray=["apples", "cranberries", "bananas", "oranges", "grapefruit"];
     let sortInputObjects=[{"title":"apples"}, {"title":"cranberries"}, {"title":"bananas"}, {"title":"oranges"}, {"title":"grapefruit"}];
+    let sortInputArrayNumbers=[100, 5, 399, 3, 1];
+    let sortInputObjectsNumbers=[{"value":100}, {"value": 5}, {"value": 399}, {"value": 3}, {"value": 1}];
 
     return (<table className="darkTable">
       <thead>
         <tr>
-          <th>Should be Correct/Incorrect</th>
+          <th>Evaluation</th>
           <th>Input</th>
           <th>Function</th>
           <th>Output</th>                   
         </tr>
       </thead>
       <tbody>
+
         <tr>
           <td>Correct</td><td>{JSON.stringify (sortInputArray)}</td><td> sort lexically </td><td>{JSON.stringify (this.sortOperations.sortAZ (this.dataTools.deepCopy (sortInputArray),null))}</td>
         </tr>     
@@ -290,7 +293,20 @@ class JsNumericDrydock extends Component {
         </tr>     
         <tr>
           <td>Correct</td><td>{JSON.stringify (sortInputObjects)}</td><td> sort lexically (reverse)</td><td>{JSON.stringify (this.sortOperations.sortZA (this.dataTools.deepCopy (sortInputObjects),"title"))}</td>
-        </tr>                             
+        </tr>
+
+        <tr>
+          <td>Correct</td><td>{JSON.stringify (sortInputArrayNumbers)}</td><td> sort numerically </td><td>{JSON.stringify (this.sortOperations.sortNumeric (this.dataTools.deepCopy (sortInputArrayNumbers),null))}</td>
+        </tr>     
+        <tr>
+          <td>Correct</td><td>{JSON.stringify (sortInputArrayNumbers)}</td><td> sort numerically (reverse) </td><td>{JSON.stringify (this.sortOperations.sortNumericReverse (this.dataTools.deepCopy (sortInputArrayNumbers),null))}</td>
+        </tr>     
+        <tr>
+          <td>Correct</td><td>{JSON.stringify (sortInputObjectsNumbers)}</td><td> sort numerically </td><td>{JSON.stringify (this.sortOperations.sortNumeric (this.dataTools.deepCopy (sortInputObjectsNumbers),"value"))}</td>
+        </tr>     
+        <tr>
+          <td>Correct</td><td>{JSON.stringify (sortInputObjectsNumbers)}</td><td> sort numerically (reverse)</td><td>{JSON.stringify (this.sortOperations.sortNumericReverse (this.dataTools.deepCopy (sortInputObjectsNumbers),"value"))}</td>
+        </tr>        
 
       </tbody>
     </table>);
