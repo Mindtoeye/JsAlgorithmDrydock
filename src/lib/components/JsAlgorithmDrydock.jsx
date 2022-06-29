@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 
-import NumericStringExtract from './algorithms/numericstringextract';
-import BasicStatisticsTests from './algorithms/basicstatisticstests';
-import SetOperations from './algorithms/setoperations';
-import SortOperations from './algorithms/sortoperations';
+import NumericStringExtract from '../algorithms/numericstringextract';
+import BasicStatisticsTests from '../algorithms/basicstatisticstests';
+import SetOperations from '../algorithms/setoperations';
+import SortOperations from '../algorithms/sortoperations';
 
 import SetGenerator from './utils/setgenerator';
 import DataTools from './utils/datatools';
@@ -13,13 +13,13 @@ import { diff } from './treekit/diff';
 
 import { tests } from './tests';
 
-import '../../css/main.css';
-import '../../css/verticaltabs.css';
+import '../../../css/main.css';
+import '../../../css/verticaltabs.css';
 
 /**
  *
  */
-class JsNumericDrydock extends Component {
+class JsAlgorithmDrydock extends Component {
 
   /**
    *
@@ -375,4 +375,4 @@ class JsNumericDrydock extends Component {
   }
 }
 
-export default JsNumericDrydock;
+export default JsAlgorithmDrydock;

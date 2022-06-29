@@ -2,6 +2,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import JsNumericDrydock from './components/JsNumericDrydock';
+import JsAlgorithmDrydock from './lib/components/JsAlgorithmDrydock';
 
-ReactDOM.render(<JsNumericDrydock />, document.getElementById("content"));
+ReactDOM.render(<JsAlgorithmDrydock />, document.getElementById("content"));
