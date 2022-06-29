@@ -46,6 +46,29 @@ body {
   height: 100%;
   overflow: hidden;
   display: flex;
+  flex-direction: column; 
+  background: black;
+}
+
+.maintitleheader {
+  flex: 0;
+  color: #fbe9b6;
+  padding: 0px 0px 0px 10px;
+}
+
+.maintitleheader h1 {
+  margin: 0px;
+  padding: 0px;
+}
+
+.tabcontainer {
+  flex: 1;
+  margin: 0px;
+  padding: 0px;
+  border: 0px solid red;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
   flex-direction: row; 
   background: #292929;
 }

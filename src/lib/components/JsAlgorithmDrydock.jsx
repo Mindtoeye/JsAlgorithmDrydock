@@ -326,51 +326,57 @@ class JsAlgorithmDrydock extends Component {
     let tab5=this.generateTest5();
     let tab6=this.generateTest6();
 
-  	return (<div className="maincontainer">
-        <div className="tab">
-  	    <button className={"tablinks " + this.state.tabs [0].active} onClick={(e) => this.switchTab(e,0)}>{this.state.tabs [0].title}</button>
-  	    <button className={"tablinks " + this.state.tabs [1].active} onClick={(e) => this.switchTab(e,1)}>{this.state.tabs [1].title}</button>
-  	    <button className={"tablinks " + this.state.tabs [2].active} onClick={(e) => this.switchTab(e,2)}>{this.state.tabs [2].title}</button>
-        <button className={"tablinks " + this.state.tabs [3].active} onClick={(e) => this.switchTab(e,3)}>{this.state.tabs [3].title}</button>
-        <button className={"tablinks " + this.state.tabs [4].active} onClick={(e) => this.switchTab(e,4)}>{this.state.tabs [4].title}</button>
-        <button className={"tablinks " + this.state.tabs [5].active} onClick={(e) => this.switchTab(e,5)}>{this.state.tabs [5].title}</button>        
-  	  </div>
+  	return (      
+      <div className="maincontainer">
+        <div className="maintitleheader">
+          <h1>Knossys Algorithm Drydock</h1>
+        </div>
+        <div className="tabcontainer">
+          <div className="tab">
+    	      <button className={"tablinks " + this.state.tabs [0].active} onClick={(e) => this.switchTab(e,0)}>{this.state.tabs [0].title}</button>
+    	      <button className={"tablinks " + this.state.tabs [1].active} onClick={(e) => this.switchTab(e,1)}>{this.state.tabs [1].title}</button>
+    	      <button className={"tablinks " + this.state.tabs [2].active} onClick={(e) => this.switchTab(e,2)}>{this.state.tabs [2].title}</button>
+            <button className={"tablinks " + this.state.tabs [3].active} onClick={(e) => this.switchTab(e,3)}>{this.state.tabs [3].title}</button>
+            <button className={"tablinks " + this.state.tabs [4].active} onClick={(e) => this.switchTab(e,4)}>{this.state.tabs [4].title}</button>
+            <button className={"tablinks " + this.state.tabs [5].active} onClick={(e) => this.switchTab(e,5)}>{this.state.tabs [5].title}</button>        
+    	    </div>
 
-  	  <div id="test1" className={"tabcontent " + this.state.tabs [0].shown}>
-      <h2 className="testtitle">{this.state.tabs [0].title}</h2>
-  	  {tab1}
-  	  </div>
+          <div id="test1" className={"tabcontent " + this.state.tabs [0].shown}>
+            <h2 className="testtitle">{this.state.tabs [0].title}</h2>
+            {tab1}
+          </div>
 
-  	  <div id="test2" className={"tabcontent " + this.state.tabs [1].shown}>
-      <h2 className="testtitle">{this.state.tabs [1].title}</h2>  
-  	  {tab2}
-  	  </div>
+          <div id="test2" className={"tabcontent " + this.state.tabs [1].shown}>
+            <h2 className="testtitle">{this.state.tabs [1].title}</h2>  
+            {tab2}
+          </div>
 
-  	  <div id="test3" className={"tabcontent " + this.state.tabs [2].shown}>
-      <h2 className="testtitle">{this.state.tabs [2].title}</h2>  
-  	  {tab3}
-  	  </div>
+          <div id="test3" className={"tabcontent " + this.state.tabs [2].shown}>
+            <h2 className="testtitle">{this.state.tabs [2].title}</h2>  
+            {tab3}
+          </div>
 
-      <div id="test4" className={"tabcontent " + this.state.tabs [3].shown}>
-      <h2 className="testtitle">{this.state.tabs [3].title}</h2>  
-      {tab4}
-      </div>
+          <div id="test4" className={"tabcontent " + this.state.tabs [3].shown}>
+            <h2 className="testtitle">{this.state.tabs [3].title}</h2>  
+            {tab4}
+          </div>
 
-      <div id="test5" className={"tabcontent " + this.state.tabs [4].shown}>
-      <h2 className="testtitle">{this.state.tabs [4].title}</h2>  
-      {tab5}
-      </div>
+          <div id="test5" className={"tabcontent " + this.state.tabs [4].shown}>
+            <h2 className="testtitle">{this.state.tabs [4].title}</h2>  
+            {tab5}
+          </div>
 
-      <div id="test6" className={"tabcontent " + this.state.tabs [5].shown}>
-      <h2 className="testtitle">{this.state.tabs [5].title}</h2>  
-      {tab6}
-      </div>
+          <div id="test6" className={"tabcontent " + this.state.tabs [5].shown}>
+            <h2 className="testtitle">{this.state.tabs [5].title}</h2>  
+            {tab6}
+          </div>
 
-      <div className="references">
-        <div className="references-context"><h2>{context}</h2></div>
-        <div className="references-content">{content}</div>
-      </div>     
+          <div className="references">
+            <div className="references-context"><h2>{context}</h2></div>
+            <div className="references-content">{content}</div>
+          </div>  
 
+        </div>
   	</div>);
   }
 }
