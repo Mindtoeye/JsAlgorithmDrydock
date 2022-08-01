@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faAngleLeft, faAngleRight, faAngleUp, faAngleDown, faSearch, faCalendarCheck, faInfoCircle, faRedo } from '@fortawesome/free-solid-svg-icons'
+
 import NumericStringExtract from '../algorithms/numericstringextract';
 import BasicStatisticsTests from '../algorithms/basicstatisticstests';
 import SetOperations from '../algorithms/setoperations';
@@ -7,6 +10,7 @@ import SortOperations from '../algorithms/sortoperations';
 
 import SetGenerator from './utils/setgenerator';
 import DataTools from './utils/datatools';
+import StringTools from './utils/stringtools';
 import TestingTools from './TestingTools';
 
 import { diff } from './treekit/diff';
@@ -29,6 +33,7 @@ class JsAlgorithmDrydock extends Component {
 
     this.setGenerator = new SetGenerator ();
     this.dataTools = new DataTools ();
+    this.stringTools = new StringTools ();
 
     let data=this.dataTools.deepCopy (tests);
 
@@ -36,7 +41,8 @@ class JsAlgorithmDrydock extends Component {
 
   	this.state={
       tab: 0,
-      tabs: data
+      tabs: data,
+      showReferences: true
 	  };
 
   	this.stringExtract = new NumericStringExtract ();
@@ -45,6 +51,16 @@ class JsAlgorithmDrydock extends Component {
     this.sortOperations = new SortOperations ();
 
   	this.switchTab = this.switchTab.bind (this);
+
+    this.onShowReferences = this.onShowReferences.bind (this);
+  }
+
+  /**
+   *
+   */
+  onShowReferences (e) {
+    let showRef=this.state.showReferences;
+    this.setState ({showReferences: !showRef});
   }
 
   /**
@@ -91,6 +107,13 @@ class JsAlgorithmDrydock extends Component {
       tab: target,
 	    tabs: newTabs
 	  });
+  }
+
+  /**
+   * 
+   */
+  generatePrettyHTML (aData) {
+    return (<div className="test-codeblock"><pre dangerouslySetInnerHTML={{ __html: aData }}></pre></div>);
   }
 
   /**
@@ -163,7 +186,7 @@ class JsAlgorithmDrydock extends Component {
   }
 
   /**
-   *
+   * Statistics
    */
   generateTest2 () {
     let setFixed=this.setGenerator.generateFixedInt (10,3);
@@ -180,13 +203,13 @@ class JsAlgorithmDrydock extends Component {
       </thead>
       <tbody>
         <tr>
-          <td>Correct</td><td>{JSON.stringify (setFixed)}</td><td> median </td><td>{this.basicStats.mean (setFixed)}</td>
+          <td>Correct</td><td>{this.generatePrettyHTML (this.stringTools.syntaxHighlight (setFixed))}</td><td> median </td><td>{this.basicStats.mean (setFixed)}</td>
         </tr>
         <tr>
-          <td>Correct</td><td>{JSON.stringify (setRandom)}</td><td> median </td><td>{this.basicStats.mean (setRandom)}</td>
+          <td>Correct</td><td>{this.generatePrettyHTML (this.stringTools.syntaxHighlight (setRandom))}</td><td> median </td><td>{this.basicStats.mean (setRandom)}</td>
         </tr>        
         <tr>
-          <td>Correct</td><td>{JSON.stringify (setRandom)}</td><td> range </td><td>{JSON.stringify (this.basicStats.range (setRandom))}</td>
+          <td>Correct</td><td>{this.generatePrettyHTML (this.stringTools.syntaxHighlight (setRandom))}</td><td> range </td><td>{this.generatePrettyHTML (this.stringTools.syntaxHighlight (this.basicStats.range (setRandom)))}</td>
         </tr>                
       </tbody>
     </table>);
@@ -215,11 +238,12 @@ class JsAlgorithmDrydock extends Component {
   }  
 
   /**
-   *
+   * Set Operations
    */
   generateTest4 () {
     let setRandom1=this.setGenerator.generateRandomInt (10);
     let setRandom2=this.setGenerator.generateRandomInt (10);
+    let setRandom3=this.setGenerator.generateRandomInt (20);
     return (<table className="darkTable">
       <thead>
         <tr>
@@ -231,11 +255,20 @@ class JsAlgorithmDrydock extends Component {
       </thead>
       <tbody>
         <tr>
-          <td>Correct</td><td>{JSON.stringify (setRandom1) + ", " + JSON.stringify (setRandom2)}</td><td> and </td><td>{JSON.stringify (this.setOperations.and (setRandom1,setRandom2))}</td>
+          <td>Correct</td><td>{this.generatePrettyHTML (this.stringTools.syntaxHighlight (setRandom3))}</td><td> unique </td><td>{this.generatePrettyHTML (this.stringTools.syntaxHighlight (this.setOperations.unique (setRandom3)))}</td>
+        </tr>      
+        <tr>
+          <td>Correct</td><td>{this.generatePrettyHTML (this.stringTools.syntaxHighlight (setRandom1))}{" "}{this.generatePrettyHTML (this.stringTools.syntaxHighlight (setRandom2))}</td><td> and (not unique)</td><td>{this.generatePrettyHTML (this.stringTools.syntaxHighlight (this.setOperations.and (setRandom1,setRandom2,false)))}</td>
         </tr>
         <tr>
-          <td>Correct</td><td>{JSON.stringify (setRandom1) + ", " + JSON.stringify (setRandom2)}</td><td> or </td><td>{JSON.stringify (this.setOperations.or (setRandom1,setRandom2))}</td>
+          <td>Correct</td><td>{this.generatePrettyHTML (this.stringTools.syntaxHighlight (setRandom1))}{" "}{this.generatePrettyHTML (this.stringTools.syntaxHighlight (setRandom2))}</td><td> and (unique)</td><td>{this.generatePrettyHTML (this.stringTools.syntaxHighlight (this.setOperations.and (setRandom1,setRandom2,true)))}</td>
         </tr>        
+        <tr>
+          <td>Correct</td><td>{this.generatePrettyHTML (this.stringTools.syntaxHighlight (setRandom1))}{" "}{this.generatePrettyHTML (this.stringTools.syntaxHighlight (setRandom2))}</td><td> or (not unique)</td><td>{this.generatePrettyHTML (this.stringTools.syntaxHighlight (this.setOperations.or (setRandom1,setRandom2,false)))}</td>
+        </tr>
+        <tr>
+          <td>Correct</td><td>{this.generatePrettyHTML (this.stringTools.syntaxHighlight (setRandom1))}{" "}{this.generatePrettyHTML (this.stringTools.syntaxHighlight (setRandom2))}</td><td> or (unique)</td><td>{this.generatePrettyHTML (this.stringTools.syntaxHighlight (this.setOperations.or (setRandom1,setRandom2,true)))}</td>
+        </tr>                
       </tbody>
     </table>);    
   }  
@@ -263,7 +296,7 @@ class JsAlgorithmDrydock extends Component {
   }
 
   /**
-   *
+   * Sorting methods
    */
   generateTest6 () {
     let sortInputArray=["apples", "cranberries", "bananas", "oranges", "grapefruit"];
@@ -276,37 +309,55 @@ class JsAlgorithmDrydock extends Component {
         <tr>
           <th>Evaluation</th>
           <th>Input</th>
-          <th>Function</th>
+          <th>Function / Variant</th>
           <th>Output</th>                   
         </tr>
       </thead>
       <tbody>
-
         <tr>
-          <td>Correct</td><td>{JSON.stringify (sortInputArray)}</td><td> sort lexically </td><td>{JSON.stringify (this.sortOperations.sortAZ (this.dataTools.deepCopy (sortInputArray),null))}</td>
-        </tr>     
-        <tr>
-          <td>Correct</td><td>{JSON.stringify (sortInputArray)}</td><td> sort lexically (reverse) </td><td>{JSON.stringify (this.sortOperations.sortZA (this.dataTools.deepCopy (sortInputArray),null))}</td>
-        </tr>     
-        <tr>
-          <td>Correct</td><td>{JSON.stringify (sortInputObjects)}</td><td> sort lexically </td><td>{JSON.stringify (this.sortOperations.sortAZ (this.dataTools.deepCopy (sortInputObjects),"title"))}</td>
-        </tr>     
-        <tr>
-          <td>Correct</td><td>{JSON.stringify (sortInputObjects)}</td><td> sort lexically (reverse)</td><td>{JSON.stringify (this.sortOperations.sortZA (this.dataTools.deepCopy (sortInputObjects),"title"))}</td>
+          <td className="test-heading" colSpan="4">Builtin Javascript lexical sorting</td>
         </tr>
 
         <tr>
-          <td>Correct</td><td>{JSON.stringify (sortInputArrayNumbers)}</td><td> sort numerically </td><td>{JSON.stringify (this.sortOperations.sortNumeric (this.dataTools.deepCopy (sortInputArrayNumbers),null))}</td>
+          <td>Correct</td><td>{this.generatePrettyHTML (this.stringTools.syntaxHighlight (sortInputArray))}</td><td> sort lexically </td><td>{this.generatePrettyHTML (this.stringTools.syntaxHighlight (this.sortOperations.sortAZ (this.dataTools.deepCopy (sortInputArray),null)))}</td>
         </tr>     
         <tr>
-          <td>Correct</td><td>{JSON.stringify (sortInputArrayNumbers)}</td><td> sort numerically (reverse) </td><td>{JSON.stringify (this.sortOperations.sortNumericReverse (this.dataTools.deepCopy (sortInputArrayNumbers),null))}</td>
+          <td>Correct</td><td>{this.generatePrettyHTML (this.stringTools.syntaxHighlight (sortInputArray))}</td><td> sort lexically (reverse) </td><td>{this.generatePrettyHTML (this.stringTools.syntaxHighlight (this.sortOperations.sortZA (this.dataTools.deepCopy (sortInputArray),null)))}</td>
         </tr>     
         <tr>
-          <td>Correct</td><td>{JSON.stringify (sortInputObjectsNumbers)}</td><td> sort numerically </td><td>{JSON.stringify (this.sortOperations.sortNumeric (this.dataTools.deepCopy (sortInputObjectsNumbers),"value"))}</td>
+          <td>Correct</td><td>{this.generatePrettyHTML (this.stringTools.syntaxHighlight (sortInputObjects))}</td><td> sort lexically </td><td>{this.generatePrettyHTML (this.stringTools.syntaxHighlight (this.sortOperations.sortAZ (this.dataTools.deepCopy (sortInputObjects),"title")))}</td>
         </tr>     
         <tr>
-          <td>Correct</td><td>{JSON.stringify (sortInputObjectsNumbers)}</td><td> sort numerically (reverse)</td><td>{JSON.stringify (this.sortOperations.sortNumericReverse (this.dataTools.deepCopy (sortInputObjectsNumbers),"value"))}</td>
-        </tr>        
+          <td>Correct</td><td>{this.generatePrettyHTML (this.stringTools.syntaxHighlight (sortInputObjects))}</td><td> sort lexically (reverse)</td><td>{this.generatePrettyHTML (this.stringTools.syntaxHighlight (this.sortOperations.sortZA (this.dataTools.deepCopy (sortInputObjects),"title")))}</td>
+        </tr>
+
+        <tr>
+          <td className="test-heading" colSpan="4">Builtin Javascript numeric sorting</td>
+        </tr>
+
+        <tr>
+          <td>Correct</td><td>{this.generatePrettyHTML (this.stringTools.syntaxHighlight (sortInputArrayNumbers))}</td><td> sort numerically </td><td>{this.generatePrettyHTML (this.stringTools.syntaxHighlight (this.sortOperations.sortNumeric (this.dataTools.deepCopy (sortInputArrayNumbers),null)))}</td>
+        </tr>     
+        <tr>
+          <td>Correct</td><td>{this.generatePrettyHTML (this.stringTools.syntaxHighlight (sortInputArrayNumbers))}</td><td> sort numerically (reverse) </td><td>{this.generatePrettyHTML (this.stringTools.syntaxHighlight (this.sortOperations.sortNumericReverse (this.dataTools.deepCopy (sortInputArrayNumbers),null)))}</td>
+        </tr>     
+        <tr>
+          <td>Correct</td><td>{this.generatePrettyHTML (this.stringTools.syntaxHighlight (sortInputObjectsNumbers))}</td><td> sort numerically </td><td>{this.generatePrettyHTML (this.stringTools.syntaxHighlight (this.sortOperations.sortNumeric (this.dataTools.deepCopy (sortInputObjectsNumbers),"value")))}</td>
+        </tr>     
+        <tr>
+          <td>Correct</td><td>{this.generatePrettyHTML (this.stringTools.syntaxHighlight (sortInputObjectsNumbers))}</td><td> sort numerically (reverse)</td><td>{this.generatePrettyHTML (this.stringTools.syntaxHighlight (this.sortOperations.sortNumericReverse (this.dataTools.deepCopy (sortInputObjectsNumbers),"value")))}</td>
+        </tr>
+
+        <tr>
+          <td className="test-heading" colSpan="4">Insertion Sort</td>
+        </tr>
+
+        <tr>
+          <td>Correct</td><td>{this.generatePrettyHTML (this.stringTools.syntaxHighlight (sortInputArrayNumbers))}</td><td> insertion sort</td><td>{this.generatePrettyHTML (this.stringTools.syntaxHighlight (this.sortOperations.sortInsertion (this.dataTools.deepCopy (sortInputArrayNumbers),null)))}</td>
+        </tr>
+        <tr>
+          <td>Correct</td><td>{this.generatePrettyHTML (this.stringTools.syntaxHighlight (sortInputObjectsNumbers))}</td><td> insertion sort</td><td>{this.generatePrettyHTML (this.stringTools.syntaxHighlight (this.sortOperations.sortInsertion (this.dataTools.deepCopy (sortInputObjectsNumbers),"value")))}</td>
+        </tr>
 
       </tbody>
     </table>);
@@ -316,6 +367,7 @@ class JsAlgorithmDrydock extends Component {
    *
    */
   render () {
+    let references;
     let context=this.state.tabs [this.state.tab].title;
     let content=this.state.tabs [this.state.tab].help;
 
@@ -325,6 +377,12 @@ class JsAlgorithmDrydock extends Component {
     let tab4=this.generateTest4();
     let tab5=this.generateTest5();
     let tab6=this.generateTest6();
+
+    if (this.state.showReferences==true) {
+      references=<div className="references"><div className="references-collapser" onClick={(e) => this.onShowReferences(e)}><FontAwesomeIcon icon={faAngleRight} size={"2x"} /></div><div className="references-context"><h2>{context}</h2></div><div className="references-content">{content}</div></div>;
+    } else {
+      references=<div className="references-collapsed"><div className="references-collapser" onClick={(e) => this.onShowReferences(e)}><FontAwesomeIcon icon={faAngleLeft} size={"2x"} /></div></div>;
+    }
 
   	return (      
       <div className="maincontainer">
@@ -371,10 +429,7 @@ class JsAlgorithmDrydock extends Component {
             {tab6}
           </div>
 
-          <div className="references">
-            <div className="references-context"><h2>{context}</h2></div>
-            <div className="references-content">{content}</div>
-          </div>  
+          {references}
 
         </div>
   	</div>);

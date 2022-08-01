@@ -1,3 +1,5 @@
+/* Overrides */
+
 *:focus {
   outline: none;
 }
@@ -29,6 +31,29 @@ body {
 
   line-height: 2;
 }
+
+/* Works on Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #939393 #707070b8;
+}
+
+/* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 12px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #707070b8;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #939393;
+  border-radius: 20px;
+  border: 3px solid #707070b8;
+}
+
+/* Main configurations */
 
 .main {
   margin: 0px;
@@ -80,6 +105,13 @@ body {
   padding: 4px;
 }
 
+.references {
+  flex: 1;
+  width: 18px;
+  background: #3e3e3e;  
+  padding: 4px;
+}
+
 .references-context {
   color: white;
   text-align: center;
@@ -90,10 +122,20 @@ body {
   padding: 4px;
 }
 
+.references-collapser {
+  position: absolute;
+  bottom: 22px;
+  right: 8px;
+  width: 16px;
+  height: 16px;
+  color: white;
+  font-size: 16pt;
+}
+
 table.darkTable {
   /*font-family: "Arial Black", Gadget, sans-serif;*/
   border: 2px solid #000000;
-  background-color: #6b6969;
+  /*background-color: #6b6969;*/
   width: 100%;
   height: 200px;
   text-align: center;
@@ -108,7 +150,7 @@ table.darkTable tbody td {
   color: #dbd8d8;
 }
 table.darkTable tr:nth-child(even) {
-  background: #888888;
+  background: #3a3939;
 }
 table.darkTable thead {
   background: #000000;
@@ -144,3 +186,21 @@ table.darkTable tfoot td {
   color: #9a9a9a;
   font-size: 16pt;
 }
+
+.test-heading {
+  text-align: left;
+  font-size: 12pt !important;
+  background: #403f3f;
+  padding: 9px !important;
+}
+
+.test-codeblock {
+  text-align: left;
+}
+
+pre {padding: 2px; margin: 2px; }
+.string { color: #f8fb57; }
+.number { color: darkorange; }
+.boolean { color: blue; }
+.null { color: magenta; }
+.key { color: #49ff35; }
