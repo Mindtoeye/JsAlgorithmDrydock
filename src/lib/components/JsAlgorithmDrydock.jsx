@@ -172,7 +172,7 @@ class JsAlgorithmDrydock extends Component {
   }
 
   /**
-   *
+   * Statistics
    */
   generateTest2 () {
     let setFixed=this.setGenerator.generateFixedInt (10,3);
@@ -195,7 +195,7 @@ class JsAlgorithmDrydock extends Component {
           <td>Correct</td><td>{this.generatePrettyHTML (this.stringTools.syntaxHighlight (setRandom))}</td><td> median </td><td>{this.basicStats.mean (setRandom)}</td>
         </tr>        
         <tr>
-          <td>Correct</td><td>{this.generatePrettyHTML (this.stringTools.syntaxHighlight (setRandom))}</td><td> range </td><td>{this.stringTools.syntaxHighlight (this.basicStats.range (setRandom))}</td>
+          <td>Correct</td><td>{this.generatePrettyHTML (this.stringTools.syntaxHighlight (setRandom))}</td><td> range </td><td>{this.generatePrettyHTML (this.stringTools.syntaxHighlight (this.basicStats.range (setRandom)))}</td>
         </tr>                
       </tbody>
     </table>);
@@ -229,6 +229,7 @@ class JsAlgorithmDrydock extends Component {
   generateTest4 () {
     let setRandom1=this.setGenerator.generateRandomInt (10);
     let setRandom2=this.setGenerator.generateRandomInt (10);
+    let setRandom3=this.setGenerator.generateRandomInt (20);
     return (<table className="darkTable">
       <thead>
         <tr>
@@ -240,11 +241,20 @@ class JsAlgorithmDrydock extends Component {
       </thead>
       <tbody>
         <tr>
-          <td>Correct</td><td>{this.generatePrettyHTML (this.stringTools.syntaxHighlight (setRandom1))}{" and "}{this.generatePrettyHTML (this.stringTools.syntaxHighlight (setRandom2))}</td><td> and </td><td>{this.generatePrettyHTML (this.stringTools.syntaxHighlight (this.setOperations.and (setRandom1,setRandom2)))}</td>
+          <td>Correct</td><td>{this.generatePrettyHTML (this.stringTools.syntaxHighlight (setRandom3))}</td><td> unique </td><td>{this.generatePrettyHTML (this.stringTools.syntaxHighlight (this.setOperations.unique (setRandom3)))}</td>
+        </tr>      
+        <tr>
+          <td>Correct</td><td>{this.generatePrettyHTML (this.stringTools.syntaxHighlight (setRandom1))}{" "}{this.generatePrettyHTML (this.stringTools.syntaxHighlight (setRandom2))}</td><td> and (not unique)</td><td>{this.generatePrettyHTML (this.stringTools.syntaxHighlight (this.setOperations.and (setRandom1,setRandom2,false)))}</td>
         </tr>
         <tr>
-          <td>Correct</td><td>{this.generatePrettyHTML (this.stringTools.syntaxHighlight (setRandom1))}{" or "}{this.generatePrettyHTML (this.stringTools.syntaxHighlight (setRandom2))}</td><td> or </td><td>{this.generatePrettyHTML (this.stringTools.syntaxHighlight (this.setOperations.or (setRandom1,setRandom2)))}</td>
+          <td>Correct</td><td>{this.generatePrettyHTML (this.stringTools.syntaxHighlight (setRandom1))}{" "}{this.generatePrettyHTML (this.stringTools.syntaxHighlight (setRandom2))}</td><td> and (unique)</td><td>{this.generatePrettyHTML (this.stringTools.syntaxHighlight (this.setOperations.and (setRandom1,setRandom2,true)))}</td>
         </tr>        
+        <tr>
+          <td>Correct</td><td>{this.generatePrettyHTML (this.stringTools.syntaxHighlight (setRandom1))}{" "}{this.generatePrettyHTML (this.stringTools.syntaxHighlight (setRandom2))}</td><td> or (not unique)</td><td>{this.generatePrettyHTML (this.stringTools.syntaxHighlight (this.setOperations.or (setRandom1,setRandom2,false)))}</td>
+        </tr>
+        <tr>
+          <td>Correct</td><td>{this.generatePrettyHTML (this.stringTools.syntaxHighlight (setRandom1))}{" "}{this.generatePrettyHTML (this.stringTools.syntaxHighlight (setRandom2))}</td><td> or (unique)</td><td>{this.generatePrettyHTML (this.stringTools.syntaxHighlight (this.setOperations.or (setRandom1,setRandom2,true)))}</td>
+        </tr>                
       </tbody>
     </table>);    
   }  
@@ -291,7 +301,7 @@ class JsAlgorithmDrydock extends Component {
       </thead>
       <tbody>
         <tr>
-          <td className="test-heading" colspan="4">Builtin Javascript lexical sorting</td>
+          <td className="test-heading" colSpan="4">Builtin Javascript lexical sorting</td>
         </tr>
 
         <tr>
@@ -308,7 +318,7 @@ class JsAlgorithmDrydock extends Component {
         </tr>
 
         <tr>
-          <td className="test-heading" colspan="4">Builtin Javascript numeric sorting</td>
+          <td className="test-heading" colSpan="4">Builtin Javascript numeric sorting</td>
         </tr>
 
         <tr>
@@ -325,7 +335,7 @@ class JsAlgorithmDrydock extends Component {
         </tr>
 
         <tr>
-          <td className="test-heading" colspan="4">Insertion Sort</td>
+          <td className="test-heading" colSpan="4">Insertion Sort</td>
         </tr>
 
         <tr>
