@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faAngleLeft, faAngleRight, faAngleUp, faAngleDown, faSearch, faCalendarCheck, faInfoCircle, faRedo } from '@fortawesome/free-solid-svg-icons'
+
 import NumericStringExtract from '../algorithms/numericstringextract';
 import BasicStatisticsTests from '../algorithms/basicstatisticstests';
 import SetOperations from '../algorithms/setoperations';
@@ -38,7 +41,8 @@ class JsAlgorithmDrydock extends Component {
 
   	this.state={
       tab: 0,
-      tabs: data
+      tabs: data,
+      showReferences: true
 	  };
 
   	this.stringExtract = new NumericStringExtract ();
@@ -47,6 +51,16 @@ class JsAlgorithmDrydock extends Component {
     this.sortOperations = new SortOperations ();
 
   	this.switchTab = this.switchTab.bind (this);
+
+    this.onShowReferences = this.onShowReferences.bind (this);
+  }
+
+  /**
+   *
+   */
+  onShowReferences (e) {
+    let showRef=this.state.showReferences;
+    this.setState ({showReferences: !showRef});
   }
 
   /**
@@ -353,6 +367,7 @@ class JsAlgorithmDrydock extends Component {
    *
    */
   render () {
+    let references;
     let context=this.state.tabs [this.state.tab].title;
     let content=this.state.tabs [this.state.tab].help;
 
@@ -362,6 +377,12 @@ class JsAlgorithmDrydock extends Component {
     let tab4=this.generateTest4();
     let tab5=this.generateTest5();
     let tab6=this.generateTest6();
+
+    if (this.state.showReferences==true) {
+      references=<div className="references"><div className="references-collapser" onClick={(e) => this.onShowReferences(e)}><FontAwesomeIcon icon={faAngleRight} size={"2x"} /></div><div className="references-context"><h2>{context}</h2></div><div className="references-content">{content}</div></div>;
+    } else {
+      references=<div className="references-collapsed"><div className="references-collapser" onClick={(e) => this.onShowReferences(e)}><FontAwesomeIcon icon={faAngleLeft} size={"2x"} /></div></div>;
+    }
 
   	return (      
       <div className="maincontainer">
@@ -408,10 +429,7 @@ class JsAlgorithmDrydock extends Component {
             {tab6}
           </div>
 
-          <div className="references">
-            <div className="references-context"><h2>{context}</h2></div>
-            <div className="references-content">{content}</div>
-          </div>  
+          {references}
 
         </div>
   	</div>);
