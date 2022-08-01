@@ -52,6 +52,7 @@
   padding: 12px;
   width: 100%;
   border-left: none;
+  overflow-y: auto;
 }
 
 .shown {

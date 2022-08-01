@@ -78,6 +78,19 @@ class SortOperations extends OperationsBase {
 
     return (pre.reverse ());
   }  
+
+  /**
+   * 
+   */
+  sortInsertion (aList,aSortBy) {
+    console.log ("sortInsertion ("+aList.length+","+aSortBy+")");
+
+    for (let i=1;i<aList.length;i++) {
+      
+    }
+
+    return (aList);
+  }
 }
 
 export default SortOperations;
