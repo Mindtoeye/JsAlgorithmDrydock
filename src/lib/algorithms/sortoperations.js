@@ -23,7 +23,7 @@ class SortOperations extends OperationsBase {
    * 
    */
   sortAZ (aList,aSortBy) {
-    console.log ("sortAZ ("+aList.length+","+aSortBy+")");
+    //console.log ("sortAZ ("+aList.length+","+aSortBy+")");
 
     if ((aSortBy==null) || (aSortBy==undefined)) {
       aList.sort ((a,b) => {
@@ -42,7 +42,7 @@ class SortOperations extends OperationsBase {
    * see sort
    */
   sortZA (aList,aSortBy) {
-    console.log ("sortZA ("+aList.length+","+aSortBy+")");
+    //console.log ("sortZA ("+aList.length+","+aSortBy+")");
  
     let pre=this.sortAZ(aList,aSortBy);
 
@@ -53,7 +53,7 @@ class SortOperations extends OperationsBase {
    * 
    */
   sortNumeric (aList,aSortBy) {
-    console.log ("sortNumeric ("+aList.length+","+aSortBy+")");
+    //console.log ("sortNumeric ("+aList.length+","+aSortBy+")");
 
     if ((aSortBy==null) || (aSortBy==undefined)) {
       aList.sort ((a,b) => {
@@ -72,7 +72,7 @@ class SortOperations extends OperationsBase {
    * see sort
    */
   sortNumericReverse (aList,aSortBy) {
-    console.log ("sortNumericReverse ("+aList.length+","+aSortBy+")");
+    //console.log ("sortNumericReverse ("+aList.length+","+aSortBy+")");
  
     let pre=this.sortNumeric(aList,aSortBy);
 
