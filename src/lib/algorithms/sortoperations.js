@@ -2,12 +2,16 @@
 import OperationsBase from './operationsbase'
 
 /**
- *
+ * A collection of sort operations. These are very rudimentary and mostly used internally by other
+ * methods. 
+ * 
+ * @class
  */
 class SortOperations extends OperationsBase {
 
   /**
-   * 
+   * A constructor that internally configures the base class. This is part of the internal system that
+   * can dynamically add and declare discoverable functionality.
    */
   constructor () {
     super();
@@ -20,7 +24,8 @@ class SortOperations extends OperationsBase {
   }
 
   /**
-   * 
+   * @param {array} aList - A basic Javascript Array. If aSortBy is not specified then the code will sort on the content of the elements
+   * @param {string} aSortBy - The name of an attribute on which the array of objects is to be sorted
    */
   sortAZ (aList,aSortBy) {
     //console.log ("sortAZ ("+aList.length+","+aSortBy+")");
