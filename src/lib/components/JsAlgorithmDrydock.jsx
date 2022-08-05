@@ -379,7 +379,8 @@ class JsAlgorithmDrydock extends Component {
     let tab6=this.generateTest6();
 
     if (this.state.showReferences==true) {
-      references=<div className="references"><div className="references-collapser" onClick={(e) => this.onShowReferences(e)}><FontAwesomeIcon icon={faAngleRight} size={"2x"} /></div><div className="references-context"><h2>{context}</h2></div><div className="references-content">{content}</div></div>;
+      //references=<div className="references"><div className="references-collapser" onClick={(e) => this.onShowReferences(e)}><FontAwesomeIcon icon={faAngleRight} size={"2x"} /></div><div className="references-context"><h2>{context}</h2></div><div className="references-content">{content}</div></div>;
+      references=<div className="references"><div className="references-collapser" onClick={(e) => this.onShowReferences(e)}><FontAwesomeIcon icon={faAngleRight} size={"2x"} /></div><div className="references-context"><iframe width="100%" height="100%" src={content}></iframe></div></div>;
     } else {
       references=<div className="references-collapsed"><div className="references-collapser" onClick={(e) => this.onShowReferences(e)}><FontAwesomeIcon icon={faAngleLeft} size={"2x"} /></div></div>;
     }
