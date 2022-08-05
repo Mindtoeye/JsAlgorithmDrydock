@@ -124,10 +124,13 @@ body {
   position: absolute;
   bottom: 22px;
   right: 8px;
-  width: 16px;
-  height: 16px;
+  width: 28px;
+  height: 40px;
   color: white;
   font-size: 16pt;
+  background: grey;
+  text-align: center;
+  border-radius: 3px;
 }
 
 table.darkTable {
