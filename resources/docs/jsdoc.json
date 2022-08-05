@@ -1,0 +1,16 @@
+{
+    "opts": {
+        "recurse": false,
+        "destination": "./public/docs"
+    },
+    "templates": {
+        "default": {
+            "layoutFile": "resources/docs/knossys-layout.tmpl",
+            "staticFiles": {
+                "include": [
+                    "resources/docs/jsdoc-knossys.css"
+                ]
+            }
+        }
+    }
+}
