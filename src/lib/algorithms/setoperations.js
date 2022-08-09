@@ -1,8 +1,9 @@
+import OperationsBase from './operationsbase'
 
 /**
  *
  */
-class SetOperations {
+class SetOperations extends OperationsBase {
 
   /**
    * Can we do this in one iteration, e.g. t = N

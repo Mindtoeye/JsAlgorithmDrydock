@@ -7,6 +7,7 @@ import NumericStringExtract from '../algorithms/numericstringextract';
 import BasicStatisticsTests from '../algorithms/basicstatisticstests';
 import SetOperations from '../algorithms/setoperations';
 import SortOperations from '../algorithms/sortoperations';
+import Hashtable from '../algorithms/hashtable';
 
 import SetGenerator from './utils/setgenerator';
 import DataTools from './utils/datatools';
@@ -364,6 +365,38 @@ class JsAlgorithmDrydock extends Component {
   }    
 
   /**
+   * Sorting methods
+   */
+  generateTest7 () {
+    return (<table className="darkTable">
+      <thead>
+        <tr>
+          <th>Evaluation</th>
+          <th>Input</th>
+          <th>Function / Variant</th>
+          <th>Output</th>                   
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td className="test-heading" colSpan="4">Hash functions</td>
+        </tr>
+
+        <tr>
+          <td>Correct</td><td>{"A"}</td><td> Add object </td><td>{"A"}</td>
+        </tr>
+        <tr>          
+          <td>Correct</td><td>{"A"}</td><td> Get object </td><td>{"A"}</td>
+        </tr>
+        <tr>          
+          <td>Correct</td><td>{"A"}</td><td> Delete object </td><td>{"A"}</td>          
+        </tr>     
+
+      </tbody>
+    </table>);
+  }
+
+  /**
    *
    */
   render () {
@@ -377,10 +410,10 @@ class JsAlgorithmDrydock extends Component {
     let tab4=this.generateTest4();
     let tab5=this.generateTest5();
     let tab6=this.generateTest6();
+    let tab7=this.generateTest7();
 
     if (this.state.showReferences==true) {
-      //references=<div className="references"><div className="references-collapser" onClick={(e) => this.onShowReferences(e)}><FontAwesomeIcon icon={faAngleRight} size={"2x"} /></div><div className="references-context"><h2>{context}</h2></div><div className="references-content">{content}</div></div>;
-      references=<div className="references"><div className="references-collapser" onClick={(e) => this.onShowReferences(e)}><FontAwesomeIcon icon={faAngleRight} size={"2x"} /></div><div className="references-context"><iframe width="100%" height="100%" src={content}></iframe></div></div>;
+      references=<div className="references"><div className="references-collapser" onClick={(e) => this.onShowReferences(e)}><FontAwesomeIcon icon={faAngleRight} size={"2x"} /></div><div className="references-context"><iframe width="100%" height="100%" frameBorder="0" src={content}></iframe></div></div>;
     } else {
       references=<div className="references-collapsed"><div className="references-collapser" onClick={(e) => this.onShowReferences(e)}><FontAwesomeIcon icon={faAngleLeft} size={"2x"} /></div></div>;
     }
@@ -397,7 +430,8 @@ class JsAlgorithmDrydock extends Component {
     	      <button className={"tablinks " + this.state.tabs [2].active} onClick={(e) => this.switchTab(e,2)}>{this.state.tabs [2].title}</button>
             <button className={"tablinks " + this.state.tabs [3].active} onClick={(e) => this.switchTab(e,3)}>{this.state.tabs [3].title}</button>
             <button className={"tablinks " + this.state.tabs [4].active} onClick={(e) => this.switchTab(e,4)}>{this.state.tabs [4].title}</button>
-            <button className={"tablinks " + this.state.tabs [5].active} onClick={(e) => this.switchTab(e,5)}>{this.state.tabs [5].title}</button>        
+            <button className={"tablinks " + this.state.tabs [5].active} onClick={(e) => this.switchTab(e,5)}>{this.state.tabs [5].title}</button>
+            <button className={"tablinks " + this.state.tabs [6].active} onClick={(e) => this.switchTab(e,6)}>{this.state.tabs [6].title}</button>
     	    </div>
 
           <div id="test1" className={"tabcontent " + this.state.tabs [0].shown}>
@@ -429,6 +463,11 @@ class JsAlgorithmDrydock extends Component {
             <h2 className="testtitle">{this.state.tabs [5].title}</h2>  
             {tab6}
           </div>
+
+          <div id="test7" className={"tabcontent " + this.state.tabs [6].shown}>
+            <h2 className="testtitle">{this.state.tabs [6].title}</h2>  
+            {tab7}
+          </div>          
 
           {references}
 

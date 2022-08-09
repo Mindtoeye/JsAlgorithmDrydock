@@ -1,7 +1,7 @@
 const tests=[
   {
-    title: "Test 1 - Extract numeric value from string",
-    help: "docs/index.html",
+    title: "Extract numeric value from string",
+    help: "docs/NumericStringExtract.html",
     tests: [{
       input: { arg1: "01az"},
       operation: "extract",
@@ -9,24 +9,28 @@ const tests=[
       output: ["01az"]
     }]
   },{
-    title: "Test 2 - Basic statistics",
-    help: "docs/index.html",
+    title: "Basic statistics",
+    help: "docs/BasicStatisticsTests.html",
     tests: []
   },{
-    title: "Test 3 - Graph algorithms",
-    help: "docs/index.html",
+    title: "Graph algorithms",
+    help: "docs/GraphOperations.html",
     tests: []
   },{
-    title: "Test 4 - Set operations",
-    help: "docs/index.html",
+    title: "Set operations",
+    help: "docs/SetOperations.html",
     tests: []
   },{
-    title: "Test 5 - Maps, Sets, Trees, Queues, etc",
-    help: "docs/index.html",
+    title: "Queues, Stacks, etc",
+    help: "docs/QueueStackOperations.html",
     tests: []
   },{
-    title: "Test 6 - Sorting routines",
+    title: "Sorting routines",
     help: "docs/SortOperations.html",
+    tests: []
+  },{
+    title: "Hash functions",
+    help: "docs/Hashtable.html",
     tests: []
   }
 ]

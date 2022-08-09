@@ -1,8 +1,9 @@
+import OperationsBase from './operationsbase'
 
 /**
  *
  */
-class NumericStringExtract {
+class NumericStringExtract extends OperationsBase  {
 
   /**
    *
