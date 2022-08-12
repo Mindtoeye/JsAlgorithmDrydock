@@ -79,11 +79,24 @@ body {
   flex: 0;
   color: #fbe9b6;
   padding: 0px 0px 0px 10px;
+  display: flex;
+  flex-direction: row;
 }
 
 .maintitleheader h1 {
   margin: 0px;
   padding: 0px;
+}
+
+.maintitleheader-icon {
+  margin: 0px;
+  padding: 12px;
+  color: white;
+  cursor: pointer;
+}
+
+.tabcontainer-empty {
+  min-width: 53%;
 }
 
 .tabcontainer {
@@ -134,29 +147,36 @@ body {
 }
 
 table.darkTable {
-  /*font-family: "Arial Black", Gadget, sans-serif;*/
+  /* font-family: "Arial Black", Gadget, sans-serif; */
   border: 2px solid #000000;
-  /*background-color: #6b6969;*/
+  /* background-color: #6b6969; */
   width: 100%;
-  height: 200px;
+  /* height: 200px; */
   text-align: center;
   border-collapse: collapse;
+  margin-top: 4px;
+  margin-bottom: 27px;
 }
+
 table.darkTable td, table.darkTable th {
   border: 1px solid #4A4A4A;
   padding: 3px 2px;
 }
+
 table.darkTable tbody td {
   font-size: 13px;
   color: #dbd8d8;
 }
+
 table.darkTable tr:nth-child(even) {
   background: #3a3939;
 }
+
 table.darkTable thead {
   background: #000000;
   border-bottom: 3px solid #000000;
 }
+
 table.darkTable thead th {
   font-size: 15px;
   font-weight: bold;
@@ -164,6 +184,7 @@ table.darkTable thead th {
   text-align: center;
   border-left: 2px solid #4A4A4A;
 }
+
 table.darkTable thead th:first-child {
   border-left: none;
 }
@@ -184,8 +205,15 @@ table.darkTable tfoot td {
 }
 
 .testtitle {
+  color: white;
+  /*font-size: 16pt;*/
+}
+
+.testobject {
   color: #9a9a9a;
   font-size: 16pt;
+  line-height: 21pt;
+  padding-right: 10px;
 }
 
 .test-heading {
@@ -197,6 +225,11 @@ table.darkTable tfoot td {
 
 .test-codeblock {
   text-align: left;
+}
+
+.test-title-container {
+  display: flex;
+  flex-direction: row;
 }
 
 pre {padding: 2px; margin: 2px; }

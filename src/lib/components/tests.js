@@ -1,37 +1,48 @@
 const tests=[
   {
-    title: "Extract numeric value from string",
+    title: "Strings",
+    id: "numericstringextract",
     help: "docs/NumericStringExtract.html",
     tests: [{
       input: { arg1: "01az"},
       operation: "extract",
       description: "extract [0-9a-fA-F]+",
       output: ["01az"]
-    }]
+    }],
+    group: "Misc"
   },{
     title: "Basic statistics",
+    id: "basicstatisticstests",
     help: "docs/BasicStatisticsTests.html",
-    tests: []
+    tests: [],
+    group: "Statistics"
   },{
     title: "Graph algorithms",
     help: "docs/GraphOperations.html",
-    tests: []
+    tests: [],
+    group: "Graphs"
   },{
     title: "Set operations",
+    id: "setoperations",
     help: "docs/SetOperations.html",
-    tests: []
+    tests: [],
+    group: "Sets"
   },{
     title: "Queues, Stacks, etc",
     help: "docs/QueueStackOperations.html",
-    tests: []
+    tests: [],
+    group: "Collections"
   },{
     title: "Sorting routines",
+    id: "sortoperations",
     help: "docs/SortOperations.html",
-    tests: []
+    tests: [],
+    group: "Sorting"
   },{
     title: "Hash functions",
     help: "docs/Hashtable.html",
-    tests: []
+    tests: [],
+    group: "Collections"
   }
 ]
 

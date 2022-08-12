@@ -9,6 +9,8 @@ class Hashtable extends OperationsBase {
    *
    */  
   constructor (obj) {
+    super();
+    
     this.length = 0;
     this.items = {};
 
