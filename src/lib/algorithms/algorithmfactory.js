@@ -20,7 +20,7 @@ class AlgorithmFactory {
    * 
    */
   getObjectInstance (anAlgorithmName) {
-   	console.log ("getObjectInstance ("+anAlgorithmName+")");
+   	//console.log ("getObjectInstance ("+anAlgorithmName+")");
 
     if (anAlgorithmName=="sortoperations") {
       return (new SortOperations ());

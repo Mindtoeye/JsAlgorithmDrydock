@@ -238,3 +238,11 @@ pre {padding: 2px; margin: 2px; }
 .boolean { color: blue; }
 .null { color: magenta; }
 .key { color: #49ff35; }
+
+.args {
+
+}
+
+.args li {
+  margin: 4px;
+}

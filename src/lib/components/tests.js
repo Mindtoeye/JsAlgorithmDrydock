@@ -4,10 +4,13 @@ const tests=[
     id: "numericstringextract",
     help: "docs/NumericStringExtract.html",
     tests: [{
-      input: { arg1: "01az"},
+      input: ["01az"],
       operation: "extract",
-      description: "extract [0-9a-fA-F]+",
-      output: ["01az"]
+      description: "extract [0-9a-fA-F]+"
+    },{
+      input: ["01az"],
+      operation: "extract",
+      description: "extract [0-9a-fA-F]+"
     }],
     group: "Misc"
   },{
@@ -36,7 +39,47 @@ const tests=[
     title: "Sorting routines",
     id: "sortoperations",
     help: "docs/SortOperations.html",
-    tests: [],
+    tests: [{
+      input: [["apples", "cranberries", "bananas", "oranges", "grapefruit"],null],
+      operation: "sortAZ",
+      description: "sort lexically"
+    },{
+      input: [["apples", "cranberries", "bananas", "oranges", "grapefruit"],null],
+      operation: "sortZA",
+      description: "sort lexically (reverse)"
+    },{
+      input: [[{"title":"apples"}, {"title":"cranberries"}, {"title":"bananas"}, {"title":"oranges"}, {"title":"grapefruit"}],"title"],
+      operation: "sortAZ",
+      description: "sort lexically"
+    },{
+      input: [[{"title":"apples"}, {"title":"cranberries"}, {"title":"bananas"}, {"title":"oranges"}, {"title":"grapefruit"}],"title"],
+      operation: "sortZA",
+      description: "sort lexically (reverse)"
+    },{
+      input: [[100, 5, 399, 3, 1],null],
+      operation: "sortNumeric",
+      description: "sort numerically"
+    },{
+      input: [[100, 5, 399, 3, 1],null],
+      operation: "sortNumericReverse",
+      description: "sort numerically (reverse)"
+    },{
+      input: [[{"value":100}, {"value": 5}, {"value": 399}, {"value": 3}, {"value": 1}],"value"],
+      operation: "sortNumeric",
+      description: "sort numerically"
+    },{
+      input: [[{"value":100}, {"value": 5}, {"value": 399}, {"value": 3}, {"value": 1}],"value"],
+      operation: "sortNumericReverse",
+      description: "sort numerically (reverse)"
+    },{
+      input: [[100, 5, 399, 3, 1],null],
+      operation: "sortInsertion",
+      description: "insertion sort"
+    },{
+      input: [[{"value":100}, {"value": 5}, {"value": 399}, {"value": 3}, {"value": 1}],"value"],
+      operation: "sortInsertion",
+      description: "insertion sort"
+    }],
     group: "Sorting"
   },{
     title: "Hash functions",

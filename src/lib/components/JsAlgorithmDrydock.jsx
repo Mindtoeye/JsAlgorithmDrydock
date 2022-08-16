@@ -45,7 +45,7 @@ class JsAlgorithmDrydock extends Component {
 
     let groups=this.prep (data);
 
-    console.log (groups);
+    //console.log (groups);
 
   	this.state={
       tab: -1,
@@ -105,7 +105,7 @@ class JsAlgorithmDrydock extends Component {
    *
    */
   prep (data) {
-    console.log ("prep ()");
+    //console.log ("prep ()");
 
     let tabTable=new Hashtable ();
     let index=0;
@@ -179,66 +179,86 @@ class JsAlgorithmDrydock extends Component {
   }
 
   /**
-   * Sorting methods
-   */
-  generateSortingTest (testObject) {
-    let sTools=new StringTools ();
-
-    //let test=new SortOperations ();
-    let test=this.factory.getObjectInstance (testObject.id);
-
-    if (test==null) {
-      return (<tbody><tr><td>Error: unable to create test object from factory</td></tr></tbody>);      
-    }
-
-    let sortInputArray=["apples", "cranberries", "bananas", "oranges", "grapefruit"];
-    let sortInputObjects=[{"title":"apples"}, {"title":"cranberries"}, {"title":"bananas"}, {"title":"oranges"}, {"title":"grapefruit"}];
-    let sortInputArrayNumbers=[100, 5, 399, 3, 1];
-    let sortInputObjectsNumbers=[{"value":100}, {"value": 5}, {"value": 399}, {"value": 3}, {"value": 1}];
-
-    return (
-      <tbody>
-        <tr>
-          <td>Correct</td><td>{this.generatePrettyHTML (sTools.syntaxHighlight (sortInputArray))}</td><td> sort lexically </td><td>{this.generatePrettyHTML (sTools.syntaxHighlight (test.sortAZ (sortInputArray,null)))}</td>
-        </tr>     
-        <tr>
-          <td>Correct</td><td>{this.generatePrettyHTML (sTools.syntaxHighlight (sortInputArray))}</td><td> sort lexically (reverse) </td><td>{this.generatePrettyHTML (sTools.syntaxHighlight (test.sortZA (sortInputArray,null)))}</td>
-        </tr>     
-        <tr>
-          <td>Correct</td><td>{this.generatePrettyHTML (sTools.syntaxHighlight (sortInputObjects))}</td><td> sort lexically </td><td>{this.generatePrettyHTML (sTools.syntaxHighlight (test.sortAZ (sortInputObjects,"title")))}</td>
-        </tr>     
-        <tr>
-          <td>Correct</td><td>{this.generatePrettyHTML (sTools.syntaxHighlight (sortInputObjects))}</td><td> sort lexically (reverse)</td><td>{this.generatePrettyHTML (sTools.syntaxHighlight (test.sortZA (sortInputObjects,"title")))}</td>
-        </tr>
-      </tbody>);
-  }   
-
-  /**
    * 
    */
-  generateTest (testObject) {
-    let test;
+  executeTest (test,testObject) {
+    //console.log ("executeTest ()");
 
-    test=this.generateSortingTest (testObject);
+    let result={};
 
-    return (<table className="darkTable">
-        <thead>
-          <tr>
-            <th>Evaluation</th>
-            <th>Input</th>
-            <th>Function / Variant</th>
-            <th>Output</th>                   
-          </tr>
-        </thead>
-        {test}
-      </table>);
+    if (test [testObject.operation]) {
+      result=test [testObject.operation] (...testObject.input);
+    } else {
+      console.log ("Test operation ("+testObject.operation+") does not exist on test object: " + testObject.operation);
+    }
+
+    return (result);
   }
 
   /**
    * 
    */
+  generateArgumentList (aList) {
+    //console.log (aList);
+    let sTools=new StringTools ();    
+
+    let list=[];
+
+    for (let i=0;i<aList.length;i++) {
+      list.push (<li key={"key-"+this.dataTools.uuidv4()}>{this.generatePrettyHTML (sTools.syntaxHighlight (aList [i]))}</li>);
+    }
+
+    return (<ol className="args">{list}</ol>);
+  }
+
+  /**
+   * 
+   */
+  generateTestElements (testObject) {
+    //console.log ("generateTestElements ("+testObject.id+")");
+
+    let sTools=new StringTools ();
+
+    let test=this.factory.getObjectInstance (testObject.id);
+
+    if (test==null) {
+      return (<table className="darkTable"><tbody><tr><td>Error: unable to create test object from factory</td></tr></tbody></table>);      
+    }
+
+    let testResults=[];
+
+    for (let i=0;i<testObject.tests.length;i++) {
+      let aTest=testObject.tests [i];
+
+      testResults.push(<tr key={"test-" + testObject.id + "-" + i}><td>{this.generateArgumentList (aTest.input)}</td><td>{aTest.operation}</td><td>{aTest.description}</td><td>{this.generatePrettyHTML (sTools.syntaxHighlight (this.executeTest (test,aTest)))}</td></tr>);
+    }
+
+    if (testObject.id=="sortoperations") {
+      return (<table className="darkTable">
+        <thead>
+          <tr>
+            <th>Input / Arguments</th>
+            <th>Function / Variant</th>
+            <th>Description</th>            
+            <th>Output</th>                   
+          </tr>
+        </thead>
+          <tbody>
+          {testResults} 
+          </tbody>
+        </table>);
+      }
+      
+      return (<div></div>);
+  }   
+
+  /**
+   * 
+   */
   generateTestElement (testObject) {
-    let testtable=this.generateTest (testObject);
+    //console.log ("generateTestElement ("+testObject.id+")");
+
+    let testtable=this.generateTestElements (testObject);
     return (<div key={"test-"+testObject.id}>
         <div className="test-title-container">
           <FontAwesomeIcon icon={faInfoCircle} size={"2x"} style={{color: "#fbe9b6", paddingRight: "10px", cursor: "pointer"}} onClick={(e) => this.onTestClick (e,testObject.id)}/>
@@ -252,6 +272,8 @@ class JsAlgorithmDrydock extends Component {
    * 
    */
   generateTabs () {
+    //console.log ("generateTabs ()");
+
     let tabs=[];
 
     for (let key in this.state.groups) {
