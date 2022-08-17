@@ -242,23 +242,19 @@ class JsAlgorithmDrydock extends Component {
       testResults.push(<tr key={"test-" + testObject.id + "-" + i}><td>{this.generateArgumentList (input)}</td><td>{aTest.operation}</td><td>{aTest.description}</td><td>{this.generatePrettyHTML (sTools.syntaxHighlight (this.executeTest (test,aTest,input)))}</td></tr>);
     }
 
-    if (testObject.id=="sortoperations") {
-      return (<table className="darkTable">
-        <thead>
-          <tr>
-            <th>Input / Arguments</th>
-            <th>Function / Variant</th>
-            <th>Description</th>            
-            <th>Output</th>                   
-          </tr>
-        </thead>
-          <tbody>
-          {testResults} 
-          </tbody>
-        </table>);
-      }
-      
-      return (<div></div>);
+    return (<table className="darkTable">
+      <thead>
+        <tr>
+          <th>Input / Arguments</th>
+          <th>Function / Variant</th>
+          <th>Description</th>            
+          <th>Output</th>                   
+        </tr>
+      </thead>
+        <tbody>
+        {testResults} 
+        </tbody>
+    </table>);
   }   
 
   /**

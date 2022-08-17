@@ -126,7 +126,7 @@ class SortOperations extends OperationsBase {
    * @param {string} aSortBy - The name of an attribute on which the array of objects is to be sorted
    */
   sortInsertion (aList,aSortBy) {
-    console.log ("sortInsertion ("+aList.length+","+aSortBy+")");
+    //console.log ("sortInsertion ("+aList.length+","+aSortBy+")");
 
     for (let i=1;i<aList.length;i++) {
       

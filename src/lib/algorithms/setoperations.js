@@ -7,6 +7,7 @@ class SetOperations extends OperationsBase {
 
   /**
    * Can we do this in one iteration, e.g. t = N
+   * Bug: this algorithm fails with more than 2 of the same element
    */
   unique (aSet) {
     //console.log ("unique ("+JSON.stringify (aSet)+")");

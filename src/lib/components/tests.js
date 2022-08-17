@@ -28,7 +28,52 @@ const tests=[
     title: "Set operations",
     id: "setoperations",
     help: "docs/SetOperations.html",
-    tests: [],
+    tests: [{
+      input: [["a", "b", "c", "d", "a", "b", "c", "d", "a", "b", "c", "d", "a", "b", "c", "d"]],
+      operation: "unique",
+      description: "Return a list where every element occurs only once",
+      shuffle: true
+    },{
+      input: [["c", "d", "e", "f" , "g"],["a", "b", "c", "d"],false],
+      operation: "and",
+      description: "and (not unique)",
+      shuffle: true
+    },{
+      input: [["c", "d", "e", "f" , "g"],["a", "b", "c", "d"],true],
+      operation: "and",
+      description: "and (unique)",
+      shuffle: true
+    },{
+      input: [["c", "d", "e", "f" , "g"],["a", "b", "c", "d"],false],
+      operation: "or",
+      description: "or (not unique)",
+      shuffle: true
+    },{
+      input: [["c", "d", "e", "f" , "g"],["a", "b", "c", "d"],true],
+      operation: "or",
+      description: "or (unique)",
+      shuffle: true
+    },{
+      input: [[ 4, 5, 6 , 7],[1, 2, 3, 4],false],
+      operation: "and",
+      description: "and (not unique)",
+      shuffle: true
+    },{
+      input: [[ 4, 5, 6 , 7],[1, 2, 3, 4],true],
+      operation: "and",
+      description: "and (unique)",
+      shuffle: true
+    },{
+      input: [[ 4, 5, 6 , 7],[1, 2, 3, 4],false],
+      operation: "or",
+      description: "or (not unique)",
+      shuffle: true
+    },{
+      input: [[ 4, 5, 6 , 7],[1, 2, 3, 4],true],
+      operation: "or",
+      description: "or (unique)",
+      shuffle: true
+    }],
     group: "Sets"
   },{
     title: "Queues, Stacks, etc",

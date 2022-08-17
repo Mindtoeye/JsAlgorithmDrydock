@@ -235,7 +235,7 @@ table.darkTable tfoot td {
 pre {padding: 2px; margin: 2px; }
 .string { color: #f8fb57; }
 .number { color: darkorange; }
-.boolean { color: blue; }
+.boolean { color: #0070d3; }
 .null { color: magenta; }
 .key { color: #49ff35; }
 
