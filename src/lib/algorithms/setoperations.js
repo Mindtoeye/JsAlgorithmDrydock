@@ -6,25 +6,33 @@ import OperationsBase from './operationsbase'
 class SetOperations extends OperationsBase {
 
   /**
-   * Can we do this in one iteration, e.g. t = N
-   * Bug: this algorithm fails with more than 2 of the same element
+   * Can we do this in one iteration?
+   * @description This method takes a set and randomizes their order. Note that it returns
+   * a new set.
+   * @param aSet
    */
   unique (aSet) {
-    //console.log ("unique ("+JSON.stringify (aSet)+")");
-
     let result=[];
-    let clean=false;
-
+    
     while (aSet.length>0) {
+      // The element we're investigating is always the first one
       let target=aSet [0];
       result.push (target);      
       aSet.splice (0,1);
 
-      // Remove any copies we find further down
-      for (let i=0;i<aSet.length;i++) {
-        if (aSet [i]==target) {
-          aSet.splice(i,1);            
-        }
+      let clean=false;
+      while (clean==false) {
+        clean=true;
+        // Remove any copies we find further down. Right now this
+        // loop is called too many times. Not sure how we can use
+        // splice while updating it in a loop as well
+        for (let i=0;i<aSet.length;i++) {
+          if (aSet [i]==target) {
+            aSet.splice(i,1);
+            clean=false;
+            break;
+          }
+        }        
       }
     }
 
@@ -32,7 +40,7 @@ class SetOperations extends OperationsBase {
   }
 
   /**
-   * t = N^M
+   * O = N^M
    */
   and (set1,set2, makeUnique) {
     let result=[];
@@ -55,7 +63,7 @@ class SetOperations extends OperationsBase {
   }
 
   /**
-  * t = N + M
+  * O = N + M
    */
   or (set1,set2, makeUnique) {
     let result=[];
