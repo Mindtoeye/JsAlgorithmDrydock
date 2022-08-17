@@ -37,6 +37,27 @@ class SortOperations extends OperationsBase {
   }
 
   /**
+   * @description Shuffles or randomizes the order of a provided array
+   * @param array
+   */
+  shuffle(array) {
+    let currentIndex = array.length,  randomIndex;
+
+    // While there remain elements to shuffle.
+    while (currentIndex != 0) {
+
+      // Pick a remaining element.
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
+
+      // And swap it with the current element.
+      [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
+    }
+
+    return (array);
+  }
+
+  /**
    * @param {array} aList - A basic Javascript Array. If aSortBy is not specified then the code will sort on the content of the elements
    * @param {string} aSortBy - The name of an attribute on which the array of objects is to be sorted
    */
@@ -57,7 +78,8 @@ class SortOperations extends OperationsBase {
   }
   
   /**
-   * see sort
+   * @param {array} aList - A basic Javascript Array. If aSortBy is not specified then the code will sort on the content of the elements
+   * @param {string} aSortBy - The name of an attribute on which the array of objects is to be sorted
    */
   sortZA (aList,aSortBy) {
     //console.log ("sortZA ("+aList.length+","+aSortBy+")");
@@ -68,7 +90,8 @@ class SortOperations extends OperationsBase {
   }
 
   /**
-   * 
+   * @param {array} aList - A basic Javascript Array. If aSortBy is not specified then the code will sort on the content of the elements
+   * @param {string} aSortBy - The name of an attribute on which the array of objects is to be sorted
    */
   sortNumeric (aList,aSortBy) {
     //console.log ("sortNumeric ("+aList.length+","+aSortBy+")");
@@ -87,7 +110,8 @@ class SortOperations extends OperationsBase {
   }
   
   /**
-   * see sort
+   * @param {array} aList - A basic Javascript Array. If aSortBy is not specified then the code will sort on the content of the elements
+   * @param {string} aSortBy - The name of an attribute on which the array of objects is to be sorted
    */
   sortNumericReverse (aList,aSortBy) {
     //console.log ("sortNumericReverse ("+aList.length+","+aSortBy+")");
@@ -98,7 +122,8 @@ class SortOperations extends OperationsBase {
   }  
 
   /**
-   * 
+   * @param {array} aList - A basic Javascript Array. If aSortBy is not specified then the code will sort on the content of the elements
+   * @param {string} aSortBy - The name of an attribute on which the array of objects is to be sorted
    */
   sortInsertion (aList,aSortBy) {
     console.log ("sortInsertion ("+aList.length+","+aSortBy+")");

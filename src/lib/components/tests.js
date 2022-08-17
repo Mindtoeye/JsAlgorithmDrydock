@@ -40,45 +40,60 @@ const tests=[
     id: "sortoperations",
     help: "docs/SortOperations.html",
     tests: [{
-      input: [["apples", "cranberries", "bananas", "oranges", "grapefruit"],null],
+      input: [["cranberries", "apples", "bananas", "oranges", "grapefruit"],null],
       operation: "sortAZ",
-      description: "sort lexically"
+      description: "sort lexically",
+      shuffle: true
     },{
-      input: [["apples", "cranberries", "bananas", "oranges", "grapefruit"],null],
+      input: [["oranges", "bananas", "apples", "cranberries", "bananas", "oranges", "grapefruit"],null],
       operation: "sortZA",
-      description: "sort lexically (reverse)"
+      description: "sort lexically (reverse)",
+      shuffle: true
     },{
       input: [[{"title":"apples"}, {"title":"cranberries"}, {"title":"bananas"}, {"title":"oranges"}, {"title":"grapefruit"}],"title"],
       operation: "sortAZ",
-      description: "sort lexically"
+      description: "sort lexically",
+      shuffle: true
     },{
       input: [[{"title":"apples"}, {"title":"cranberries"}, {"title":"bananas"}, {"title":"oranges"}, {"title":"grapefruit"}],"title"],
       operation: "sortZA",
-      description: "sort lexically (reverse)"
+      description: "sort lexically (reverse)",
+      shuffle: true
     },{
       input: [[100, 5, 399, 3, 1],null],
       operation: "sortNumeric",
-      description: "sort numerically"
+      description: "sort numerically",
+      shuffle: true
     },{
       input: [[100, 5, 399, 3, 1],null],
       operation: "sortNumericReverse",
-      description: "sort numerically (reverse)"
+      description: "sort numerically (reverse)",
+      shuffle: true
     },{
       input: [[{"value":100}, {"value": 5}, {"value": 399}, {"value": 3}, {"value": 1}],"value"],
       operation: "sortNumeric",
-      description: "sort numerically"
+      description: "sort numerically",
+      shuffle: true
     },{
       input: [[{"value":100}, {"value": 5}, {"value": 399}, {"value": 3}, {"value": 1}],"value"],
       operation: "sortNumericReverse",
-      description: "sort numerically (reverse)"
+      description: "sort numerically (reverse)",
+      shuffle: true
     },{
       input: [[100, 5, 399, 3, 1],null],
       operation: "sortInsertion",
-      description: "insertion sort"
+      description: "insertion sort",
+      shuffle: true
     },{
       input: [[{"value":100}, {"value": 5}, {"value": 399}, {"value": 3}, {"value": 1}],"value"],
       operation: "sortInsertion",
-      description: "insertion sort"
+      description: "insertion sort",
+      shuffle: true
+    },{
+      input: [[{"value":100}, {"value": 5}, {"value": 399}, {"value": 3}, {"value": 1}]],
+      operation: "shuffle",
+      description: "Shuffle an array",
+      shuffle: false
     }],
     group: "Sorting"
   },{

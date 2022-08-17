@@ -181,13 +181,13 @@ class JsAlgorithmDrydock extends Component {
   /**
    * 
    */
-  executeTest (test,testObject) {
+  executeTest (test,testObject,anInput) {
     //console.log ("executeTest ()");
 
     let result={};
 
     if (test [testObject.operation]) {
-      result=test [testObject.operation] (...testObject.input);
+      result=test [testObject.operation] (...anInput);
     } else {
       console.log ("Test operation ("+testObject.operation+") does not exist on test object: " + testObject.operation);
     }
@@ -230,7 +230,16 @@ class JsAlgorithmDrydock extends Component {
     for (let i=0;i<testObject.tests.length;i++) {
       let aTest=testObject.tests [i];
 
-      testResults.push(<tr key={"test-" + testObject.id + "-" + i}><td>{this.generateArgumentList (aTest.input)}</td><td>{aTest.operation}</td><td>{aTest.description}</td><td>{this.generatePrettyHTML (sTools.syntaxHighlight (this.executeTest (test,aTest)))}</td></tr>);
+      let input=this.dataTools.deepCopy (aTest.input);
+
+      if (aTest.hasOwnProperty("shuffle")==true) {
+        //console.log ("Test: " + aTest.operation + ", shuffle: " + aTest.shuffle);
+        if (aTest.shuffle==true) {
+          input[0]=this.sortOperations.shuffle (input[0]);
+        }
+      }      
+
+      testResults.push(<tr key={"test-" + testObject.id + "-" + i}><td>{this.generateArgumentList (input)}</td><td>{aTest.operation}</td><td>{aTest.description}</td><td>{this.generatePrettyHTML (sTools.syntaxHighlight (this.executeTest (test,aTest,input)))}</td></tr>);
     }
 
     if (testObject.id=="sortoperations") {
