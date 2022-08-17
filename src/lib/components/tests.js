@@ -21,6 +21,7 @@ const tests=[
     group: "Statistics"
   },{
     title: "Graph algorithms",
+    id: "graphs",
     help: "docs/GraphOperations.html",
     tests: [],
     group: "Graphs"
@@ -82,6 +83,7 @@ const tests=[
     group: "Sets"
   },{
     title: "Queues, Stacks, etc",
+    id "collections",
     help: "docs/QueueStackOperations.html",
     tests: [],
     group: "Collections"
