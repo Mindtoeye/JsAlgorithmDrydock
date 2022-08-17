@@ -40,9 +40,12 @@ class SetOperations extends OperationsBase {
   }
 
   /**
-   * O = N^M
+   * Operation: Intersection
+   * Notation: A ∩ B
+   * 
+   * @description All elements which are in both set a and set 2
    */
-  and (set1,set2, makeUnique) {
+  and (set1, set2, makeUnique) {
     let result=[];
     for (let i =0;i<set1.length;i++) {
       let testValue=set1 [i];
@@ -63,16 +66,19 @@ class SetOperations extends OperationsBase {
   }
 
   /**
-  * O = N + M
+   * Operation: Union
+   * Notation: A ∪ B
+   * 
+   * @description All elements which are in either set 1 or set B (or both)
    */
-  or (set1,set2, makeUnique) {
+  or (set1, set2, makeUnique) {
     let result=[];
 
-    for (let i =0;i<set1.length;i++) {
+    for (let i=0;i<set1.length;i++) {
       result.push (set1 [i]);
     }
 
-    for (let i =0;i<set2.length;i++) {
+    for (let i=0;i<set2.length;i++) {
       result.push (set2 [i]);
     }    
 
@@ -84,6 +90,37 @@ class SetOperations extends OperationsBase {
 
     return (result);
   }
+
+  /**
+   * Operation: Subtraction/Difference
+   * Notation: A − B
+   * 
+   * @description All elements which are in set 1 but not in set 2
+   */
+  difference (set1, set2, makeUnique) {
+    let result=[];
+
+    for (let i=0;i<set1.length;i++) {
+      let found=false;
+      for (let j=0;j<set2.length;j++) {
+        if (set2 [j]==set1 [i]) {
+          found=true;
+        }
+      }
+      if (found==false) {
+        result.push (set1 [i]);
+      }
+    }
+
+
+    if (makeUnique) {
+      if (makeUnique==true) {
+        return (this.unique (result));
+      }
+    }
+
+    return (result);
+  }  
 }
 
 export default SetOperations;

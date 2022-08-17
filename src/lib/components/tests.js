@@ -73,6 +73,11 @@ const tests=[
       operation: "or",
       description: "or (unique)",
       shuffle: true
+    },{
+      input: [[ 4, 5, 6 , 7],[1, 2, 3, 4],false],
+      operation: "difference",
+      description: "difference (items are in set 1 but not in set 2",
+      shuffle: true
     }],
     group: "Sets"
   },{
