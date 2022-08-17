@@ -231,15 +231,17 @@ class JsAlgorithmDrydock extends Component {
       let aTest=testObject.tests [i];
 
       let input=this.dataTools.deepCopy (aTest.input);
+      let shuffleLabel="false";
 
       if (aTest.hasOwnProperty("shuffle")==true) {
         //console.log ("Test: " + aTest.operation + ", shuffle: " + aTest.shuffle);
         if (aTest.shuffle==true) {
           input[0]=this.sortOperations.shuffle (input[0]);
+          shuffleLabel="true";
         }
       }      
 
-      testResults.push(<tr key={"test-" + testObject.id + "-" + i}><td>{this.generateArgumentList (input)}</td><td>{aTest.operation}</td><td>{aTest.description}</td><td>{this.generatePrettyHTML (sTools.syntaxHighlight (this.executeTest (test,aTest,input)))}</td></tr>);
+      testResults.push(<tr key={"test-" + testObject.id + "-" + i}><td><p className="testlabel">Randomize input: {shuffleLabel}</p>{this.generateArgumentList (input)}</td><td>{aTest.operation}</td><td>{aTest.description}</td><td>{this.generatePrettyHTML (sTools.syntaxHighlight (this.executeTest (test,aTest,input)))}</td></tr>);
     }
 
     return (<table className="darkTable">

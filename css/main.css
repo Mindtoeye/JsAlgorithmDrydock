@@ -152,7 +152,7 @@ table.darkTable {
   /* background-color: #6b6969; */
   width: 100%;
   /* height: 200px; */
-  text-align: center;
+  text-align: left;
   border-collapse: collapse;
   margin-top: 4px;
   margin-bottom: 27px;
@@ -245,4 +245,9 @@ pre {padding: 2px; margin: 2px; }
 
 .args li {
   margin: 4px;
+}
+
+.testlabel {
+  padding: 4px;
+  margin: 0px;
 }
