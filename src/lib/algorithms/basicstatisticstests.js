@@ -1,6 +1,35 @@
 
 /**
- *
+  <p>Via Wikipedia:</p>
+
+  <p>A statistic (singular) or sample statistic is any quantity computed from values in a sample which is considered for a statistical purpose. Statistical purposes include estimating a population parameter, describing a sample, or evaluating a hypothesis. The average (or mean) of sample values is a statistic. The term statistic is used both for the function and for the value of the function on a given sample. When a statistic is being used for a specific purpose, it may be referred to by a name indicating its purpose.</p>
+
+  <p>When a statistic is used for estimating a population parameter, the statistic is called an estimator. A population parameter is any characteristic of a population under study, but when it is not feasible to directly measure the value of a population parameter, statistical methods are used to infer the likely value of the parameter on the basis of a statistic computed from a sample taken from the population. For example, the sample mean is an unbiased estimator of the population mean. This means that the expected value of the sample mean equals the true population mean.</p>
+
+  <p>A descriptive statistic is used to summarize the sample data. A test statistic is used in statistical hypothesis testing. Note that a single statistic can be used for multiple purposes – for example the sample mean can be used to estimate the population mean, to describe a sample data set, or to test a hypothesis.
+  Contents</p>
+
+  <p>Some examples of statistics are:</p>
+
+  <p><i>"In a recent survey of Americans, 52% of Republicans say global warming is happening."</i></p>
+
+  <p>In this case, "52%" is a statistic, namely the percentage of Republicans in the survey sample who believe in global warming. The population is the set of all Republicans in the United States, and the population parameter being estimated is the percentage of all Republicans in the United States, not just those surveyed, who believe in global warming.</p>
+
+  <p><i>"The manager of a large hotel located near Disney World indicated that 20 selected guests had a mean length of stay equal to 5.6 days."</i></p>
+
+  <p>In this example, "5.6 days" is a statistic, namely the mean length of stay for our sample of 20 hotel guests. The population is the set of all guests of this hotel, and the population parameter being estimated is the mean length of stay for all guests.[2] Note that whether the estimator is unbiased in this case depends upon the sample selection process; see the inspection paradox.</p>
+
+  <p>There are a variety of functions that are used to calculate statistics. Some include:</p>
+
+  <ul>
+    <li>Sample mean, sample median, and sample mode</li>
+    <li>Sample variance and sample standard deviation</li>
+    <li>Sample quantiles besides the median, e.g., quartiles and percentiles</li>
+    <li>Test statistics, such as t-statistic, chi-squared statistic, f statistic</li>
+    <li>Order statistics, including sample maximum and minimum</li>
+    <li>Sample moments and functions thereof, including kurtosis and skewness</li>
+    <li>Various functionals of the empirical distribution function</li>
+  </ul>
  */
 class BasicStatisticsTests {
 

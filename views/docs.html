@@ -2,16 +2,48 @@
 <head>
   <link type="text/css" rel="stylesheet" href="jsdoc-knossys.css">
   <style>
-   p {
+   h1, h2, p {
    	margin-left: 24px;
    }
   </style>
 </head>
 <body>
-<h1>Knossys Algorithm API Reference</h1>
+<h1>Knossys Algorithms Drydock</h1>
+
+<h2>What is a Software Drydock</h2>
+
 <p>
-Via Wikipedia:
+Much like a traditional drydock for ships, a software drydock is a specially crafted environment designed to inspect and test pieces of software in isolation.
+Using a drydock addresses the following considerations when developing critical components such as algorithms:
+
+<ul>
+  <li>A Drydock should be as simple as possible as to ensure that any test results are results of the software being inspected and not the result of problems with the testing environment</li>
+  <li>A Drydock should allow easy inspection of testing results</li>
+  <li>A Drydock should be data driven as to avoid containing specialized code that might pollute testing results</li>
+  <li>A Drydock should be open source so that its own code can be inspected and tooled</li>
+</ul>
 </p>
+
+<h2>Why an Algorithms Package</h2>
+
+<p>
+Two driving forces contributed to the creation of the Knossys algorithm package.
+</p>
+
+<p>
+1. A big concern in software package development and usage is the problem of possible supply chain attacks. This is the idea that somewhere in the dependency list of a software product someone snuck in malicious code. The only way to avoid this is to drastically reduce the amount of dependencies a package uses. In the case of the Knossys algorithm package there are zero to no dependencies.
+</p>
+<p>
+Via <a href="https://www.cisa.gov/sites/default/files/publications/defending_against_software_supply_chain_attacks_508_1.pdf">CISA</a>: A software supply chain attack occurs when a cyber threat actor infiltrates a software vendor's network and employs malicious code to compromise the software before the vendor sends it to their customers. The compromised software then compromises the customer's data or system.
+</p>
+
+<p>
+2. 
+</p>
+
+<h2>Algorithms</h2>
+
+<p><i>Via Wikipedia:</i></p>
 <p>
 In mathematics and computer science, an algorithm is a finite sequence of rigorous instructions, typically used to solve a class of specific problems or to perform a computation. Algorithms are used as specifications for performing calculations and data processing. By making use of artificial intelligence, algorithms can perform automated deductions (referred to as automated reasoning) and use mathematical and logical tests to divert the code execution through various routes (referred to as automated decision-making). Using human characteristics as descriptors of machines in metaphorical ways was already practiced by Alan Turing with terms such as "memory", "search" and "stimulus".
 </p>

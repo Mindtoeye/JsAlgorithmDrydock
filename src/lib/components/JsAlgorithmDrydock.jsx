@@ -24,6 +24,7 @@ import '../../../css/main.css';
 import '../../../css/verticaltabs.css';
 
 const home="docs/docs.html";
+const api="docs/api.html";
 
 /**
  *
@@ -52,7 +53,8 @@ class JsAlgorithmDrydock extends Component {
       tabs: data,
       groups: groups,
       showReferences: true,
-      apiReference: home
+      apiReference: api,
+      home: home
 	  };
 
   	this.stringExtract = new NumericStringExtract ();
@@ -71,7 +73,11 @@ class JsAlgorithmDrydock extends Component {
    */
   goHome (e) {
     //console.log ("goHome ()");
-    this.setState ({tab: -1,apiReference: home});
+    this.setState ({
+      tab: -1, 
+      apiReference: api,
+      home: home
+    });
   }
 
   /**
@@ -121,6 +127,7 @@ class JsAlgorithmDrydock extends Component {
         testTab={};
         testTab.items=[];
 
+        /*
         if (j==0) {
           testTab.active="active";
           testTab.shown="shown";
@@ -128,6 +135,10 @@ class JsAlgorithmDrydock extends Component {
           testTab.active=" ";
           testTab.shown="hidden";
         }
+        */
+
+        testTab.active=" ";
+        testTab.shown="hidden";        
 
         testTab.index=index;
 
@@ -329,7 +340,7 @@ class JsAlgorithmDrydock extends Component {
     tabtitles=this.generateTabTitles ();
 
     if (this.state.tab==-1) {
-      tabs=<div className="tabcontainer-empty">Knossys Algorithm Drydock</div>;
+      tabs=<div className="tabcontainer-empty"><iframe width="100%" height="100%" frameBorder="0" src={this.state.home}></iframe></div>;
     } else {
       tabs=this.generateTabs (); 
     }

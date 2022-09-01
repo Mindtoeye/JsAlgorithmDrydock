@@ -83,7 +83,7 @@ const tests=[
     group: "Sets"
   },{
     title: "Queues, Stacks, etc",
-    id "collections",
+    id: "collections",
     help: "docs/QueueStackOperations.html",
     tests: [],
     group: "Collections"
