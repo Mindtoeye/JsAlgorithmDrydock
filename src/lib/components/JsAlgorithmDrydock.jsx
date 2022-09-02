@@ -73,6 +73,9 @@ class JsAlgorithmDrydock extends Component {
    */
   goHome (e) {
     //console.log ("goHome ()");
+
+    this.switchTab (null,-1);
+
     this.setState ({
       tab: -1, 
       apiReference: api,
